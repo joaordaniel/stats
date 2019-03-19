@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>ch3.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Linear Mixed Models</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="the-basic-two-level-model" class="section level1">
+<h1>3. The Basic Two-Level Model</h1>
+<p>For now let’s stick with datasets where the dependent variable is a continuous variable measured at the lowest level (level 1). You can use mixed models to analyse other types of data (e.g., binary, categorical – the so called generalized linear mixed models), or to analyse dependent variables measured at higher levels… but that’s two different stories. For now we will keep it simple: continuous dependent variable, measured at level 1 and nested within level 2 units (two-level model).</p>
+<p>You will use a similar dataset to that of the previous section (<strong>lx_2011_house2.sav</strong>). You can downloaded it <a href="data/ch3/lx_2011_house2.sav">here</a>. It also refers to 2011 housing and education data for the different Lisbon parishes. I downloaded the original data from <a href="http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos">here</a> as well, tidied it a bit and computed some variables to speed up the process (just some <strong>Data &gt; Aggregate</strong> and <strong>Transform &gt; Compute</strong>, similar to what I showed you in the previous section).</p>
+<p>Let’s assume for the benefit of this exercise and to avoid offenses to the mathematical gods that this data was obtained using a multistage sampling procedure. We randomly selected a number of parishes, from a larger population of parishes, and then, for the selected parishes we randomly selected a set of sections (from which we collected some data). And now, from our sample we are going to infer something for the population of parishes and samples (<em>Manny say what?!?</em>).</p>
+<p>The <strong>lx_2011_house2.sav</strong> data set includes the following variables:<br />
+<em>case_number</em> – it is always good to have a column indexing the row number of your original dataset in case you start fooling around with your data and later realize that you need the dataset sorted as it was in the beginning (if only live could be this simple)<br />
+<em>section_id</em> - section identifier (level 1 id)<br />
+<em>freg_id</em> – parish identifier (level 2 id)<br />
+<em>freg</em> – parish name<br />
+<em>empty_houses</em> - number of empty houses in each section (level 1 dependent variable)<br />
+<em>illiterate</em> - number of illiterate residents in each section (level 1 covariate)<br />
+<em>illiterate_between</em> – mean number of illiterate residents in each parish (level 2 covariate)<br />
+<em>illiterate_within</em> – illiterate centered on illiterate_between, or if you prefer, illiterate group mean centered scores (i.e., illiterate - illiterate_between; level 1 covariate)<br />
+<em>illiterate2</em> - number of illiterate residents in each section centered on the sample grand mean (i.e., illiterate - 15.36; level 1 covariate)<br />
+<em>illiterate2_between</em> - mean illiterate2 scores in each parish (level 2 covariate) <em>old_buildings</em> – 1 if the % of parish buildings built before 1919 exceeds .25; 0 otherwise (level 2 categorical variable).<br />
+ </p>
+<p>To compute the <em>illiterate_between</em> and <em>illiterate_within</em> variables you just need to use the same procedure as described in <strong>section 2.2.Data &gt; Aggregate</strong>. It goes like this: first aggregate <em>illiterate</em> variable by <em>freg_id</em> to get <em>illiterate_between</em>, and then compute <em>illiterate_within</em> by subtracting illiterate_between from illiterate.</p>
+<p>To compute <em>illiterate2</em> you need to subtract the <em>illiterate</em> grand mean (sample mean) from <em>illiterate</em> (this is called <strong>grand mean centering</strong>). To get the sample mean (THE grand-mean) of <em>illiterate</em> scores go to <strong>Analyze &gt; Descriptive Statistics &gt; Descriptive</strong>. You then aggregate <em>illiterate2</em> by <em>freg_id</em> to get <em>illiterate_between2</em> (<strong>group mean centered scores</strong>).</p>
+<p>Wrapping up, all <strong>variables that take the same value for each section within a parish are level 2 variables</strong>, the rest are level 1 variables (identifier variables excluded).</p>
+<p>This dataset has data for 1054 sections (<strong><em>M</em> = 1054</strong>; number of rows), distributed between 53 different parishes (<strong><em>N</em> = 53</strong>) – that gives an average of 19.89 sections per parish (<strong>mean <em>n</em> = 19.89</strong>). This M, N, n notation is the one used by Snijders &amp; Bosker (2012). You will see different notations elsewhere.<br />
+   </p>
+<div id="the-null-random-intercept-model" class="section level2">
+<h2>3.1. The null random intercept model</h2>
+<p><strong>Figure 3.1.1</strong> shows you the distribution of empty houses across sections and parishes. There’s a black line there, crossing the vertical axis at the <em>empty_houses</em> sample mean (<strong>47.64</strong>; go to <strong>Analyze &gt; Descriptive Statistics &gt; Descriptives</strong> to get this value). There are also smaller coloured lines that represent empty_houses parish means.</p>
+<p><img src="images/ch3/fig_3_1_1_data.png" /></p>
+<p><strong>Figure 3.1.1</strong>. <em>Distribution of empty houses across sections and parishes</em>.<br />
+   </p>
+<p>Let’s start this by first fitting a <strong>null model</strong> to empty_houses. This is a model with <em>empty_houses</em> as a dependent variable, but with <strong>no independent/predictor variables</strong>.</p>
+<p>Follow the instructions of <strong>figure 3.1.2</strong> to do it. We will skip a lot of the menus in the dialog boxes and leave as much as we can with the default settings. The dialog boxes can feel a bit overwhelming at first but you’ll eventually get the hang of it. Default options in statistical software are like those little spiders on your kitchen cabinets. You don’t know how they got there, they make you feel that you have to do something about it, but in the end you just get used to them and leave them alone.</p>
+<p><img src="images/ch3/fig_3_1_2_null.gif" /></p>
+<p><strong>Figure 3.1.2</strong>. <em>Estimating a null mixed model</em>.<br />
+   </p>
+<p>You should be looking at your output file by now. There is a lot of information there. I’ll ignore some of it for the moment and guide you through some basic details.</p>
+<p>Take a look at the estimates of fixed effects and covariance parameters (<strong>figure 3.1.3</strong>).</p>
+<p><img src="images/ch3/fig_3_1_3_null_estimates.png" /></p>
+<p><strong>Figure 3.1.3</strong>. <em>Fixed and random null model estimates</em>.<br />
+   </p>
+<p>I want you to check 3 things: 1. the <strong>intercept parameter estimate</strong> (fixed effect); let’s just call it <strong>intercept</strong>; it equals <strong>59.37</strong> 2. the <strong>intercept variance estimate</strong> (random effect); let’s call it <strong><em>σ</em><sub>between</sub></strong>; it equals <strong>463.60</strong> 3. the <strong>residual variance estimate</strong>; let’s call it <strong><em>σ</em><sub>within</sub></strong>; it equals <strong>710.70</strong></p>
+<p>These are the 3 parameters your model estimated, and this number equals the total number of parameters displayed in the first table of your output (<strong>figure 3.1.4</strong>). If you had run a linear regression null model you would only have estimated 2 effects: an intercept parameter estimate and a residual variance estimate.</p>
+<p><img src="images/ch3/fig_3_1_4_null_parameters.png" /></p>
+<p><strong>Figure 3.1.4</strong>. <em>Number of null model estimated parameters</em>.</p>
+<p>The intercept parameter estimate (fixed effect) is what the model estimates the mean <em>empty_house</em> scores to be in the population of parishes from where our data was taken. The other 2 estimates are measures of unexplained variance.<br />
+   </p>
+<div id="unexplained-what" class="section level3">
+<h3>Unexplained what?</h3>
+<p>The null model you ran partitioned the variance of <em>empty_houses</em> scores (our dependent variable) in within section variance (level 1 variance; <strong><em>σ</em><sub>within</sub></strong>) and between parish variance (level 2 variance; <strong><em>σ</em><sub>between</sub></strong>).</p>
+<p>We can use <strong>figure 3.1.1</strong> to give you an intuitive notion of what these variances are. In this figure the mean distance of each small line (mean parish scores) to the big black line (sample overall mean) gives you a proxy of level 2 variance. If the little lines are very far away from the big line, there’s a lot of level 2 variance. The lower the models estimates level 2 variance, the better you know about why empty houses mean scores vary between parishes.</p>
+<p>The mean distance of each circle to the corresponding parish mean (little lines) gives you a proxy of level 1 variance. If these distances are big, there is a lot of level 1 variance in our dependent variable. Meaning that empty house numbers within each parish vary a lot for reasons (variables) we haven’t accounted for.</p>
+<p>If you had run a null regression model (no mixed stuff), the estimated intercept would equal the <em>empty_houses</em> sample mean (<strong>47.64</strong>), and you would only have one type of residual. These residuals are computed from the difference between <em>empty_houses</em> scores and the sample mean. If there is only one type of residual there is only one type of variance. This variance approximates the total variance estimated by the null mixed model (sum of <strong><em>σ</em><sub>within</sub></strong> and <strong><em>σ</em><sub>between</sub></strong>) – why they are not exactly the same involves an elaborated mathematical explanation that you will have to find somewhere else because it is beyond my reach.</p>
+<p>By the way, you can actually use the <strong>Linear Mixed Models dialog boxes</strong> to do your linear models (ANOVAs, regressions, ANCOVAs, etc.). Just restore the <strong>Linear Mixed Models: Random Effects dialog box</strong> to how you first found it. This will remove the random effects of your model, and just leave you with fixed effects (as in ANOVAs, regressions, ANCOVAs, etc.). This just shows you that linear models and linear mixed are like close cousins – do you prefer the black and white kind of cousin? Or do you prefer the flexible, shades of grey kind of cousin? With this small trick, if you like to experiment with your data, you can shift between linear models and linear mixed models to compare model estimates – if estimates don’t differ that much maybe you don’t need a mixed model after all (eat that Reviewer 1!).    </p>
+</div>
+<div id="intraclass-correlation" class="section level3">
+<h3>Intraclass Correlation</h3>
+<p>So what does the partitioning of variance in level 1 (within groups) and level 2 variance (between groups) give you?</p>
+<p>It gives you the famous <strong>Intraclass Correlation</strong> (<strong>ICC</strong> for shorts). ICC is a measure of dependency of two observations within the same grouping unit. In our example here, you can think of it as a measure of how similar <em>empty_house</em> scores are within the same parish.</p>
+<p>You can compute the ICC by dividing level 1 variance (<strong><em>σ</em><sub>within</sub></strong>) by the total variance (<strong><em>σ</em><sub>within</sub></strong> + <strong><em>σ</em><sub>between</sub></strong>). The null model total variance equals 710.70 + 463.60 = 1174.3, and so the ICC equals 710.70 / 1174.3 = <strong>.61</strong>.</p>
+<p>How high is a high ICC? Well, it… depends. From my experience with school data (students nested in schools kind of data), ICCs close to .20 are high and not that common. In longitudinal data (repeated observations nested within subjects) ICCs can go much higher. Imagine you measure your mood daily. Your mood score for today will be highly relate with tomorrow’s mood score and so on and so forth (high ICC). If your mood scores vary completely at random on a daily basis, then maybe, just maybe, you might need some help – who knows, maybe statistics will be the life-anchor you’ve been searching for.</p>
+<p>Another way to look at the <strong>ICC</strong> is as <strong>measure of unexplained variance at each level</strong>. Here the ICC is .61, so <strong>61% of the unexplained variance is due to within parish differences</strong> and <strong>39% (100% - 61%) is due to between parish differences</strong>. This suggests that differences in empty house scores have more to do with section characteristics than to parish characteristics.</p>
+<p>Ok. Let’s make this more interesting and add some predictors to our model.<br />
+   </p>
+</div>
+</div>
+<div id="adding-a-fixed-predictor-to-the-random-intercept-model" class="section level2">
+<h2>3.2. Adding a fixed predictor to the random intercept model</h2>
+<p>Let’s test whether or not the number of empty houses is related to number of illiterate residents (why? because…). Just follow the instructions in <strong>figure 3.2.1</strong>. Hereafter I’ll refer to this model as <strong>model 1</strong>.</p>
+<p><img src="images/ch3/fig_3_2_1_model1.gif" /></p>
+<p><strong>Figure 3.2.1</strong>. <em>Estimating fixed predictor effects</em>.<br />
+   </p>
+<p>The first table of the output refers to the number of parameter estimates (<strong>figure 3.2.2</strong>). Compared to the null model, we now estimated 1 more parameter – the fixed effect of <em>illiterate</em> covariate. That makes <strong>2 fixed effects</strong>, plus <strong>1 random effect</strong> (intercept variance), plus the <strong>residual variance</strong>.</p>
+<p><img src="images/ch3/fig_3_2_2_m1_parameters.png" /></p>
+<p><strong>Figure 3.2.2</strong>. <em>Model 1 parameters</em>.<br />
+   </p>
+<p>Now let’s look at the fixed effects tables (<strong>figure 3.2.3</strong>). There’s an ANOVA like table (with F tests; top) and a regression like table (t tests; bottom). Look at the <em>p</em> value of the <em>illiterate</em> fixed effect in both tables – it’s the same (<strong>.014</strong>). This will not always be the case, but we’ll get back to this later when we find a difference (believe me, we will).</p>
+<p>One advantage of reporting regression coefficients is that they allow us a practical interpretation of the <em>illiterate</em> effect: an <strong>increase in 1 illiterate resident</strong> in a parish section is associated with a <strong>decrease (negative estimate) of .13 empty houses</strong> (<strong>-.128</strong> to be more precise). So you need about 8 illiterate residents to take an empty house out of the market (bad joke?).</p>
+<p>The <strong>intercept fixed effect</strong> was estimated as <strong>61.14</strong>. <strong>Intercept</strong> regression coefficients (coming from a mixed model or not) represent the <strong>estimated mean score</strong> of the dependent variable when <strong>all predictor variables are 0</strong>. So here, 61.14 is the model estimated mean number of empty houses for sections with 0 (zero) illiterate residents.</p>
+<p><img src="images/ch3/fig_3_2_3_m1_estimates.png" /></p>
+<p><strong>Figure 3.2.3</strong>. <em>Model 1 fixed effects’ estimates</em>.<br />
+   </p>
+<div id="how-do-random-intercept-models-look-like" class="section level3">
+<h3>How do random intercept models look like?</h3>
+<p>Take a look at the <strong>figure 3.2.4</strong>. It’s a plot of predicted number of empty houses for 6 parishes. Did you check the <strong>Predicted value – Predicted Values &amp; Residuals checkbox</strong> in the <strong>Linear Mixed Models: Save dialog box</strong>? If you did, there’s a variable in your dataset somewhere, whose name starts with <em>PRED_</em>. What do you see?</p>
+<p><img src="images/ch3/fig_3_2_4_m1_pred_rf.png" /></p>
+<p><strong>Figure 3.2.4</strong>. <em>Model 1: number of empty houses predicted from the number of illiterate residents for 6 parishes starting with letter A</em>.    </p>
+<p>One thing you can notice is that <strong>all lines are parallel</strong>. If you look at the regression equations boxes, you’ll find that all have this common part: **-.13*x**. This part of the equation defines the slope of the lines. The minus sign tells you that the lines have a negative slope (they go down from left to right). The same slope (-.13) makes them lines parallel!</p>
+<p>Does <strong>-.13</strong> ring any bell? -.13 (-.128 to be more precise) is the estimated fixed effect of the <em>illiterate</em> covariate that we talked about above (<strong>figure 3.2.3</strong>). It’s a <strong>fixed effect</strong> because the <strong>effect of <em>illiterate</em> is the same for all parishes</strong> (our level 2 unit): the -0.13*x is in every regression equation (it’s fixed! How fixe is that?).</p>
+<p>The other thing I want you to see is that all lines cross the vertical axis at different points. Lines cross the vertical axis when the predictor variable equals 0. Does this ring another bell? An intercept is an estimated value of the dependent variable when the predictor(s) variable(s) take(s) the value of 0. Every parish gets a different intercept. In the random intercept model intercepts are allowed to randomly vary from an overall value, that we baptized as the intercept fixed effect (<strong>61.14</strong>; <em>figure 3.2.3</em>).</p>
+<p>How much the different intercepts differ from the overall estimated mean is given by the estimated variance of the random effect (remember the <strong><em>σ</em><sub>between</sub>). For this model, this is estimated at </strong>453.05** (check the last table of your output; <strong>figure 3.2.5</strong>). You can use some Bayesian statistical procedures (that I have no clue about) to identify which parishes’ intercepts significantly differ from one another (in terms of the number of empty houses), if that’s your thing.</p>
+<p><img src="images/ch3/fig_3_2_5_m1_random.png" /></p>
+<p><strong>Figure 3.2.5</strong>. Model 1: between and within parish variance.<br />
+   </p>
+</div>
+<div id="how-much-variance-was-explained-by-the-illiterate-covariate" class="section level3">
+<h3>How much variance was explained by the illiterate covariate?</h3>
+<p>We can compare the estimated variances in model 1 (<strong>figure 3.2.5</strong>) with the estimated variances in the null model (<strong>figure 3.1.3</strong>) to get a glimpse at the (<em>empty_houses</em>) variance explained by the illiterate predictor.</p>
+<p>To recap, null model: <strong><em>σ</em><sub>between</sub></strong> = 463.60 (level 2), <strong><em>σ</em><sub>within</sub></strong> = 710.70 (level 1). In model 1 we got: <strong><em>σ</em><sub>between</sub></strong> = 453.05 (level 2), <strong><em>σ</em><sub>within</sub></strong> = 707.87 (level 1). So we only slightly decreased level 1 variance from 710.70 to 707.87. This corresponds to a <strong>0.39%</strong> decrease (very very little) in level 1 variance [(710.70 - 707.87) / 710.70], and a <strong>2.28%</strong> decrease [(463.60 - 453.05) / 463.60] in level 2 variance. So little explained variance by a statistically significant predictor!!! Lo and behold the magic of big datasets. One thing they do well is that they do know how to decrease those dammed <em>p</em> values.<br />
+   </p>
+</div>
+</div>
+<div id="disaggregating-within-and-between-groups-covariate-effects." class="section level2">
+<h2>3.3 Disaggregating within and between groups covariate effects.</h2>
+<p>Do you remember the story about the ecological fallacy and the Simpson paradox Wikipedia page? A covariate can show a completely different effect within or between groups. To test whether this is happening to our covariate we need to disaggregate the within and between group effects.</p>
+<p>You can do this by using an <em>illiterate</em> aggregate variable that has the same value for every section within each parish (remember the <strong>Data &gt; Aggregate</strong> commands to compute mean values?). In our dataset this variable already exists: I’ve named it <em>illiterate_between</em> (it’s just the parish <em>illiterate</em> mean scores). This variable is a level 2 variable that will model the between groups effect, while the <em>illiterate</em> scores (level 1 variable) will model the within group effect.</p>
+<p>Let’s call this model, <strong>model 2</strong>. It is still a random intercept model that will now have 2 predictors (instead of one as in model 1), plus the intercept, plus the level 2 variance, plus the level 1 variance (5 parameters in total). There’s no gif for this model – I’m taking off the training wheels for this one (look how much you’ve grown). Just:<br />
+1. add <em>illiterate_between</em> to the <strong>Covariate(s) box</strong> in the <strong>Linear Mixed Models dialog box</strong> 2. then click on the <strong>Fixed button</strong> on your right 3. and add the main effect of <strong>illiterate</strong> and <strong>illiterate_between</strong> to the <strong>Model box</strong> 4. the rest do has you’ve done in model 1 (<strong>figure 3.2.1</strong>)</p>
+<p>The first table of the output shows you the 5 parameters you estimated (the ones I just mentioned). By now you’ve realized that I’ve been systematically ignoring the Information Criteria table. We’ll get there. But I’ll throw you a candy – it relates with the model goodness of fit and it will allow us to compare different models to see if one is “better” than the other (better as in explaining more variance; better as in giving you a better story to tell about why your dependent variable varies from case to case).</p>
+<p><strong>Figure 3.3.1</strong> shows the fixed parameter estimates of model 2. So what we got? We got significant main effect of illiterate (<em>p</em> = .025) and a non-significant effect of illiterate_between (<em>p</em> = .171) – the <em>p</em> values of the F tests and t tests are the same again.</p>
+<p><img src="images/ch3/fig_3_3_1_m2_estimates.png" /></p>
+<p><strong>Figure 3.3.2</strong>. <em>Model 2 fixed effects’ estimates</em>.<br />
+   </p>
+<p>The regression estimate of the <strong><em>illiterate</em> fixed effect</strong> is <em>-.118</em> and the <strong><em>illiterate_between</em> fixed effect</strong> estimate is <em>-.539</em>. Take a look at <strong>figure 3.3.2</strong>. You can see the **-.12*x** in every regression line (-.118 rounded). This illustrates the within group effect of the number of illiterate residents.</p>
+<p><img src="images/ch3/fig_3_3_2_m2_pred_rf.png" /></p>
+<p><strong>Figure 3.3.2</strong>. <em>Model 2: within group effects of illiterate covariate</em>.    </p>
+<p>Now look at <strong>figure 3.3.3</strong>. This plot illustrates the relation between group mean illiterate scores and group mean predicted empty houses scores. To plot this you need to compute a new variable first. Just use <strong>Data &gt; Aggregate</strong> to compute the group (freg_id) mean <em>PRED_</em> scores of this model (i.e., the group mean predicted empty houses scores). To get the <em>PRED_</em> scores you need to click the <strong>Save button</strong> in the <strong>Linear Mixed Models dialog box</strong>, and then check the <strong>Predict values checkbox (Predicted Values &amp; Residuals)</strong>, before running your model.</p>
+<p>If you didn’t change the default name you should have a new <em>PRED_1_mean</em> variable (after <strong>Data &gt; Aggregate that is</strong>). You can see this variable takes the same value for every section within the same parish. Because we want to plot only 1 data point for the 53 different parishes we need to identify and select just 53 rows of our +1000 row dataset. Follow the instructions of <strong>figure 3.3.4</strong> to get this selection and then plot <em>PRED_1_mean</em> against <em>illiterate_between</em> scores (don’t forget to remove the selection filter after you finished the plot).</p>
+<p><img src="images/ch3/fig_3_3_3_m2_pred_bet.png" /></p>
+<p><strong>Figure 3.3.3</strong>. <em>Model 2: between group effects of illiterate covariate</em>.    </p>
+<p><img src="images/ch3/fig_3_3_4_selectingl2.gif" /></p>
+<p><strong>Figure 3.3.4</strong>. <em>Selecting only level 2 mean scores</em>.    </p>
+<p>The line in <strong>figure 3.3.3</strong> has a slope of <em>-.66</em> (a mean increase of 1 illiterate resident in a parish – one more illiterate in each section for example - associates with a mean decrease of .66 houses in the corresponding parish). Do you find any relation between <strong>-.66</strong> and the estimated regression estimates of illiterate (<strong>-.118</strong>) and illiterate_between (<strong>-.539</strong>; <strong>figure 3.3.1</strong>). No? Yes? Take a look again.</p>
+<p>If you add <strong>-.118</strong> and <strong>-.539</strong> together you get <strong>-.657</strong>. Round it to .66 and you get the <strong>between groups effect</strong> of <em>illiterate</em> scores. Another way to look at this, is that the <strong><em>illiterate_between</em> effect</strong> in this model gives you the <strong>difference between the within group and between group effects</strong>. Because this estimate (-.539) has an associated <em>p</em> value, you can use it to test whether the within and between group effects differ. Here that <em>p</em> value is <em>p</em> = .171. As such, within and between subjects are not statistically different. Ecological fallacy put to rest!</p>
+<p>Summing, the within and between group effects are similar (non-significant difference), and the illiterate (within) effect is different from zero. But what about the between groups effect? Is it significantly different from zero? Well, we’ll have to create a new model for that.</p>
+</div>
+<div id="disaggregating-within-and-between-groups-covariate-effects-round-2." class="section level2">
+<h2>3.3. Disaggregating within and between groups covariate effects: Round 2.</h2>
+<p>Let’s do <strong>model 3</strong>. Do everything you did to estimate model 2, except that <strong>instead of</strong> adding the <em>illiterate</em> variable to the model you <strong>replace it with</strong> the <em>illiterate_within</em> variable (illiterate scores centered on the group mean).</p>
+<p>Take a look at model 3 estimates (<strong>figure 3.3.5</strong>) and compare them with model 2 estimates (<strong>figure 3.3.2</strong>). The <em>illiterate_within</em> estimate in model 3 is exactly the same as in the <em>illiterate</em> estimate in model 2 (<strong>-.118</strong>). The <em>illiterate_between</em> estimate in model 3 is <strong>-.656</strong> (the slope in <strong>figure 3.3.3</strong>). The associated <em>p</em> value indicates that the between group effect is only marginally significant (although much further from 0 than the <em>illiterate_within</em> estimate; the very high standard error “eats” away its statistical significance).</p>
+<p>Summing, <strong>model 2 tests the difference between within and between group effects</strong> (and whether the within effects differs from zero); <strong>model 3 tests whether the within and between group effects differ from zero</strong>. None is better than the other, it depends on what you want to test.</p>
+<p>After all this, if there is no difference between both effects you may decide to drop one variable and fall back to model 1 with only the <em>illiterate</em> global effect (<strong>figure 3.2.3</strong>). Decisions, decisions… as much as you can, base your choices in theoretical reasons. We are all <em>p</em> hackers on the inside. Acknowledging it will help you make better life choices. More on the selection of models later.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

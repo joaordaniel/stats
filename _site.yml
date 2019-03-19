@@ -1,0 +1,26 @@
+name: "Linear Mixed Models"
+
+output_dir: "."
+
+navbar:
+  title: "Linear Mixed Models"
+left:
+  - text: "Welcome!"
+    href: index.html
+  - text: "1. Mixed Models – The force awakens"
+    href: ch1.html
+  - text: "2. Tidying data"
+    href: ch2.html
+  - text: "3. The Basic Two-Level Model"
+    href: ch3.html
+  - text: "4. The Random Intercept Random Slope Model"
+    href: ch4.html
+  - text: "5. Interaction Effects and Centering"
+    href: ch5.html
+  - text: "6. Three Level Models"
+    href: ch6.html
+  - text: "7. Longitudinal Data and Repeated Measures"
+    href: ch7.html
+    
+output:
+  html_document:
