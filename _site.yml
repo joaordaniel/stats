@@ -1,7 +1,5 @@
 name: "Linear Mixed Models"
 
-output_dir: "."
-
 navbar:
   title: "Linear Mixed Models"
 left:
