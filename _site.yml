@@ -4,7 +4,7 @@ output_dir: "."
 
 navbar:
   title: "Linear Mixed Models"
-left:
+right:
   - text: "Welcome!"
     href: index.html
   - text: "1. Mixed Models – The force awakens"
