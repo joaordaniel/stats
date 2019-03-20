@@ -96,9 +96,6 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
-summary {
-  display: list-item;
-}
 </style>
 
 
@@ -113,6 +110,7 @@ body {
   padding-top: 69px;
   margin-top: -69px;
 }
+
 .section h2 {
   padding-top: 69px;
   margin-top: -69px;
@@ -132,43 +130,6 @@ body {
 .section h6 {
   padding-top: 69px;
   margin-top: -69px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -190,77 +151,18 @@ $(document).ready(function () {
 });
 </script>
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
 </script>
 
 <!-- code folding -->
+
 
 
 
@@ -331,7 +233,7 @@ $(document).ready(function () {
 <h1>7. Longitudinal Data / Repeated Measures</h1>
 <p>Repeated measures data, which includes longitudinal data, is just another type of multilevel data. You have different observations nested within subjects. Here observations are level 1 data, and subjects level 2 data. You can use everything we learned so far about 2 level models to model repeated measures data.</p>
 <p>Before we continue, I just want to give you my explanation why there’s a slash between longitudinal data and repeated measures. For those of you coming from experimental psychology you probably associate repeated measures to data collected from different conditions in an experiment (say, cond1, cond2, and cond3) that all participants have to go through. But not all participants go through these conditions in the same order – you generally randomize the order of the conditions to control for order effects. So one participant does, cond3, cond2 and cond1, other does cond2, cond1, cond3, etc, etc…</p>
-<p>For those of you coming from, say, from educational psychology you should be working to close down all schools in the world and you probably associate repeated measures to data collected at different points in time (say, time1, time2, time3). Here you can’t randomize the order of time (the universe would collapse if you do).</p>
+<p>For those of you coming from educational or developmental psychology you probably associate repeated measures to data collected at different points in time (say, time1, time2, time3). Here you can’t randomize the order of time (the universe would collapse if you do).</p>
 <p>So what does this time cond thing mean? If you correlate time 1 to time 2 measures they are more likely to be correlated, because they always come one after the other, than cond 1 to cond 2 measures. This peculiarity of longitudinal data can really get you going on the path to very complex models. In this case, complex equals, adding a lot of random parameters to your models. To add a lot of random parameters you need a lot of repeated observations. What this means is that even if you know there’s a more complex model you could fit, where you make the least possible assumptions, your data cannot “support” such megalomaniac dreams. As someone said: <em>“One is looked upon as more mature when they are acting in accordance with reality”</em> – the psychodynamic reality principle can take you a long way in analysing data.</p>
 <p>To give you a quick example, I’ll ask you to remember our hypothetical daily collection of mood scores. Imagine we collected data during 10 consecutive days. Do you think your day 1 and day 2 scores are as correlated as your day 1 and day 10 scores? Probably not. 2 observations close in time are more likely to be correlated than 2 observations more spread apart. So if you want to account for this, you have to let the correlation/covariance between two consecutive observations be different, from the correlation between observations separated by two days, from the correlation between observations separated by three days, etc, etc… All these different covariances, if you let them vary, each count as 1 more random parameter you’ll have to estimate. Usually we’ll just have to assume that all these covariances are the same. Furthermore, you can even let the variance of day 1 scores to be one thing, the day 2 scores variance to be another thing, etc, etc… more random parameters. Sometimes we’ll just have to assume that all these variances are the same (the famous homogeneity of variance assumption). Don’t be sad, there’s still a lot of cool stuff that we can do. I’ll give you the basics, afterwards you can fly solo.<br />
  </p>

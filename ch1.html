@@ -96,9 +96,6 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
-summary {
-  display: list-item;
-}
 </style>
 
 
@@ -113,6 +110,7 @@ body {
   padding-top: 69px;
   margin-top: -69px;
 }
+
 .section h2 {
   padding-top: 69px;
   margin-top: -69px;
@@ -132,43 +130,6 @@ body {
 .section h6 {
   padding-top: 69px;
   margin-top: -69px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -190,77 +151,18 @@ $(document).ready(function () {
 });
 </script>
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
 </script>
 
 <!-- code folding -->
+
 
 
 
@@ -331,15 +233,14 @@ $(document).ready(function () {
 <h1>1. Mixed Models</h1>
 <p>Let’s start like this: mixed models also go by the name of multilevel models, hierarchical models, mixed effects models, mixed regression models, random coefficient models.</p>
 <p>Many textbooks abound on this topic. If you dig in a bit you’ll see that some names surface up frequently: Tom Snjiders, Joop Hox, Harvey Goldstein, Stephen Raudenbush to name a few. Most of the theoretical stuff I present here has been taken from Snijders TAB &amp; Bosker RJ (2012). <a href="https://www.stats.ox.ac.uk/~snijders/mlbook.htm">Multilevel Analysis: An Introduction to Basic and Advanced Multilevel Modeling</a>. The rest are bits and pieces from here and there. With time I will add references and corresponding links in the text so you can further your explorations of mixed models.</p>
-<p>Another book that I like and that you might want to take a look at is: Heck RH, Thomas SL &amp; Tabata LN (2014). <a href="https://www.routledge.com/Multilevel-and-Longitudinal-Modeling-with-IBM-SPSS-2nd-Edition/Heck-Thomas-Tabata/p/book/9780415817110">Multilevel and Longitudinal Modeling with SPSS</a>. It’s a really nice book to get around mixed models in SPSS. It’s filled with diagrams that will take you by the hand every step of the way.</p>
-<p>Throughout this tutorial I’ve tried as much as I can to put things in lay terms without sacrificing the mathematical truth behind all this… Enjoy!<br />
+<p>Another book that I like and that you might want to take a look at is: Heck RH, Thomas SL &amp; Tabata LN (2014). <a href="https://www.routledge.com/Multilevel-and-Longitudinal-Modeling-with-IBM-SPSS-2nd-Edition/Heck-Thomas-Tabata/p/book/9780415817110">Multilevel and Longitudinal Modeling with SPSS</a>. It’s a really nice book to get around mixed models in SPSS. It’s filled with diagrams that will take you by the hand every step of the way.<br />
    </p>
 <div id="but-why" class="section level3">
 <h3>But why?</h3>
 <p>Now that the introductions are done, why do we need mixed models? Sometimes we don’t, but I’ll give you 3 (not 13) reasons why you should hang on for a little while longer. There are more reasons, but I’m hoping to convince you with just 3. The first two (together with a few more) are detailed in Snijders &amp; Bosker (2012); the last is my own pragmatic advice.</p>
 <p><strong>First</strong>: some data sets have a nested/hierarchical/multilevel structure that needs to be accounted for. Failing to do so may lead to erroneous statistical inferences about the relation between independent/predictor variables and the dependent variable. In other words, your beloved low <em>p</em> values (on which your career depends on), coming out of an ANOVA, an ANCOVA or a linear regression for instance, maybe be biased and unworthy of your trust.</p>
 <p>ANOVAs, ANCOVAs and linear regression analysis (three different names for pretty much the same thing, so hereafter I’ll just refer to linear regressions) assume your observations (data points) are independent of each other. If your data has a nested structure (say for example, you collected data on 100 children in 10 different schools – children nested in schools), it is likely that two data points (children - lower level unit, aka micro level unit, aka secondary unit) from the same higher level unit (school – aka macro level unit, aka primary unit) are more similar than two data points from different higher level units.</p>
-<p>If they are, then data points (within the same higher level unit) are not independent from each other. That is, they are correlated to some extent (intra class correlation will tell you how much – more on this later). This violates one important assumption of linear regression. The consequences of this non-independence, in more technical terms, is that your estimates (say, the mean test score difference between boys and girls) are more or less biased. Meaning, those precious statistically significant effects, might not be so significant after all.<br />
+<p>If they are, then data points (within the same higher level unit) are not independent from each other. That is, they are correlated to some extent (intra class correlation will tell you how much – more on this later). This violates one important assumption of linear regression. The consequences of this non-independence, is that your estimates (say, the mean test score difference between boys and girls) are more or less biased. Meaning, those precious statistically significant effects, might not be so significant after all.<br />
 Check this reference if this explanation doesn’t satisfy you: <a href="https://www.tandfonline.com/doi/abs/10.1080/01443410801954201">(Dorman, 2018)</a>.</p>
 <p><strong>Second</strong>: you have to be careful with ecological fallacies. To avoid them you need to distinguish within-group (level 1) from between-group (level 2) effects. Take a look at the two images in <a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson’s paradox Wikipedia page</a>. Both images on the right show a negative between-group effect (mean y group scores decrease as x increases) and a positive within-group group effect (within each group, y scores increase as x increases). Including just one of these effects would only give you part of the story. You don’t need mixed models to disentangle these effects, but estimates using linear regressions are more biased (again, <em>p</em> values should be taken with a grain of salt) because you are attributing a group level score to the lower level unit. I know this sounds a bit sketchy but if you want to know more you can google something about the problems of aggregating variables and using a level 2 variable as a level 1 variable (if you find something that explicitly mentions Type I or Type II errors let me know, please!).</p>
 <p><strong>Third</strong>: if the reviewer, supervisor, senior colleague asks/demands, you obey. So let’s do this. Mixed models are hype, and someday you will have someone asking you to reanalyse ALL your data with a mixed model. Sometimes the call will be warranted, other times not so much. Either way you will have to know what this is all about. If you do, you will be able to analyse everything all over again (priceless!!!), or you’ll be able to talk your way out of it (the more jargon you use the more successfully you’ll scare those wannabe reviewers, but be careful, too much bullshit and it starts to stink). So let’s get our hands dirty!</p>

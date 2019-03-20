@@ -2,9 +2,11 @@ Hello and welcome.
 
 You'll be seeing a lot images and gif files (on a fast and endless mind-disturbing loop - my bad) illustrating how to use IBM SPSS to run mixed models. These images and gifs refer to IBM SPSS version 25. Different SPSS versions may show different dialog boxes. I don’t expect these differences to be very dramatic, but even if they are, with a bit of patience you’ll make SPSS do whatever you want. Remember: computers are stupid machines that just do what you tell them to do! 
 
-Use the Topics menu on the right to navigate to the different pages of the site. 
+This tutorial is an ongoing project. It will get better with time. Throughout the text I’ve tried as much as I can to put things in lay terms without sacrificing the mathematical truth behind all this.  
 
-This tutorial is an ongoing project. It will get better with time. Suggestions, comments and corrections are really welcomed. You can email me at joaordaniel at gmail.com. This site was built using RStudio and RMarkdown - if you know your way around github and want to conribute directly through there, do your push and pulls at https://github.com/joaordaniel/stats.  
+Suggestions, comments and corrections are really welcomed. You can email me at joaordaniel at gmail.com.  
+
+Use the Topics menu on the right to navigate to the different pages of the site... Enjoy!  
 &nbsp;  
 &nbsp;  
 
@@ -13,4 +15,4 @@ This tutorial is an ongoing project. It will get better with time. Suggestions, 
 Thanks to: Joana Pipa, Leonor Lavradio, and Matilde Barata for helping review the contents of this tutorial. All errors, omissions, and bad jokes are on me.   
 
 **Updates**   
-This site was launched on March 19, 2019. Check this to see if there were any major updates to the site content since the last time you were here.
+This site was launched on March 19, 2019... not much has happened since.

@@ -3,8 +3,6 @@ For now let’s stick with datasets where the dependent variable is a continuous
 
 You will use a similar dataset to that of the previous section (**lx_2011_house2.sav**). You can download it [here](data/ch3/lx_2011_house2.sav). It also refers to 2011 housing and education data for the different Lisbon parishes. I downloaded the original data from [here](http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos) as well, tidied it up a bit and computed some variables to speed up the process (just some **Data > Aggregate** and **Transform > Compute**, similar to what I showed you in the previous section).  
 
-Let’s assume for the benefit of this exercise and to avoid offenses to the mathematical gods that this data was obtained using a multistage sampling procedure. We randomly selected a number of parishes, from a larger population of parishes, and then, for the selected parishes we randomly selected a set of sections (from which we collected some data). And now, from our sample we are going to infer something for the population of parishes and samples (*Manny say what?!?*).  
-
 The **lx_2011_house2.sav** data set includes the following variables:  
 *case_number* – it is always good to have a column indexing the row number of your original dataset in case you start fooling around with your data and later realize that you need the dataset sorted as it was in the beginning (if only life could be this simple!)  
 *section_id* - section identifier (level 1 id)  
