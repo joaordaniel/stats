@@ -327,8 +327,9 @@ $(document).ready(function () {
 </div>
 
 
-<p>#4. The Random Intercept Random Slope Model<br />
-So far we have assumed that the effect of the <em>illiterate</em> covariate is the same across all parishes (remember all those parallel lines in <strong>figure 3.3.2</strong>?). What happens if we let the slopes vary? That is, if we let the effects of the number of illiterate residents vary from group to group?</p>
+<div id="the-random-intercept-random-slope-model" class="section level1">
+<h1>4. The Random Intercept Random Slope Model</h1>
+<p>So far we have assumed that the effect of the <em>illiterate</em> covariate is the same across all parishes (remember all those parallel lines in <strong>figure 3.3.2</strong>?). What happens if we let the slopes vary? That is, if we let the effects of the number of illiterate residents vary from group to group?</p>
 <p>Let’s go create <strong>model 4</strong>. Just follow the same steps you took for model 3. Go back to <strong>figure 3.2.1</strong> and to the instructions on the beginning of <strong>section 3.3</strong> if you feel lost. The only difference is that in the <strong>Linear Mixed Models: Random Effects dialog box</strong> you have to add <em>illiterate_within</em> to the <strong>Model box</strong> (<strong>figure 4.1</strong>). In the <strong>Linear Mixed Models: Save dialog box</strong> don’t forget to ask for <strong>Predicted values (Predicted Values &amp; Residuals).</strong><br />
  </p>
 <p><img src="images/ch4/fig_4_1_rslope.png" /></p>
@@ -362,6 +363,7 @@ So far we have assumed that the effect of the <em>illiterate</em> covariate is t
 <p>As far as I have been “told”, REML is better when sample sizes are small (how small is small… well… <em>“Have you noticed how good the weather has been lately?”</em>). ML is better when … (<em>“It feels almost like summer don’t you think?”</em>). When the sample sizes are big, REML and ML are expected to give very similar results. That’s another advantage of BIG data samples – you can pretty much hit buttons at random that results will always look nice.</p>
 <p>On a more serious note. The take home message is: 1. If you want to <strong>compare</strong> the fit (compare deviances) of models (from the same data!) with the <strong>same fixed effects but with different numbers of random effects</strong>, you should <strong>use REML</strong> to estimate both models; 2. if you want to <strong>compare</strong> the fit of models (from the same dataset!) with the <strong>same random effects but with different fixed effects</strong>, you should use ML instead. The reason for this is that… (<em>“Do you think it will rain next week?”</em> … got you!).</p>
 <p>Snijders &amp; Bosker (2012) provide a set of guiding rules on how to use deviance tests to build your models and decide which variables to keep/drop. The list is long and I’ll eventually summarize it here, but for now I’ll just point the way. Start with fixed effects and interactions that are theoretically meaningful and then add/test one random slope at a time. Don’t go adding a lot of random effects to your models at once (this is one I memorized), it will likely cause SPSS to start throwing errors and warnings at you. There’s a limit to how many random effects you can have- there’s a formula for that somewhere in Snijders &amp; Bosker (2012) (as you probably noticed, everything I don’t know and/or can’t explain – Snijders &amp; Bosker do and can).</p>
+</div>
 </div>
 </div>
 

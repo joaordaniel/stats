@@ -1,12 +1,12 @@
 # 3. The Basic Two-Level Model   
-For now let’s stick with datasets where the dependent variable is a continuous variable measured at the lowest level (level 1). You can use mixed models to analyse other types of data (e.g., binary, categorical – the so called generalized linear mixed models), or to analyse dependent variables measured at higher levels… but that’s two different stories. For now we will keep it simple: continuous dependent variable, measured at level 1 and nested within level 2 units (two-level model).  
+For now let’s stick with datasets where the dependent variable is a continuous variable measured at the lowest level (level 1). You can use mixed models to analyse other types of data (e.g., binary, categorical – the so called generalized linear mixed models), or to analyse dependent variables measured at higher levels… but those are two different stories. For now we will keep it simple: continuous dependent variable, measured at level 1 and nested within level 2 units (two-level model).  
 
-You will use a similar dataset to that of the previous section (**lx_2011_house2.sav**). You can downloaded it [here](data/ch3/lx_2011_house2.sav). It also refers to 2011 housing and education data for the different Lisbon parishes. I downloaded the original data from [here](http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos) as well, tidied it a bit and computed some variables to speed up the process (just some **Data > Aggregate** and **Transform > Compute**, similar to what I showed you in the previous section).  
+You will use a similar dataset to that of the previous section (**lx_2011_house2.sav**). You can download it [here](data/ch3/lx_2011_house2.sav). It also refers to 2011 housing and education data for the different Lisbon parishes. I downloaded the original data from [here](http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos) as well, tidied it up a bit and computed some variables to speed up the process (just some **Data > Aggregate** and **Transform > Compute**, similar to what I showed you in the previous section).  
 
 Let’s assume for the benefit of this exercise and to avoid offenses to the mathematical gods that this data was obtained using a multistage sampling procedure. We randomly selected a number of parishes, from a larger population of parishes, and then, for the selected parishes we randomly selected a set of sections (from which we collected some data). And now, from our sample we are going to infer something for the population of parishes and samples (*Manny say what?!?*).  
 
 The **lx_2011_house2.sav** data set includes the following variables:  
-*case_number* – it is always good to have a column indexing the row number of your original dataset in case you start fooling around with your data and later realize that you need the dataset sorted as it was in the beginning (if only live could be this simple)  
+*case_number* – it is always good to have a column indexing the row number of your original dataset in case you start fooling around with your data and later realize that you need the dataset sorted as it was in the beginning (if only life could be this simple!)  
 *section_id* - section identifier (level 1 id)  
 *freg_id* – parish identifier (level 2 id)  
 *freg* – parish name  
@@ -40,7 +40,7 @@ This dataset has data for 1054 sections (**_M_ = 1054**; number of rows), distri
 
 Let’s start this by first fitting a **null model** to empty_houses. This is a model with *empty_houses* as a dependent variable, but with **no independent/predictor variables**.  
 
-Follow the instructions of **figure 3.1.2** to do it. We will skip a lot of the menus in the dialog boxes and leave as much as we can with the default settings. The dialog boxes can feel a bit overwhelming at first but you’ll eventually get the hang of it. Default options in statistical software are like those little spiders on your kitchen cabinets. You don’t know how they got there, they make you feel that you have to do something about it, but in the end you just get used to them and leave them alone.  
+Follow the instructions of **figure 3.1.2** to do it. We will skip a lot of the menus in the dialog boxes and leave as default most of the settings. The dialog boxes can feel a bit overwhelming at first but you’ll eventually get the hang of it. Default options in statistical software are like those little spiders on your kitchen cabinets. You don’t know how they got there, they make you feel that you have to do something about it, but in the end you just get used to them and leave them alone.  
 
 ![](images/ch3/fig_3_1_2_null.gif)
 
@@ -58,9 +58,9 @@ Take a look at the estimates of fixed effects and covariance parameters (**figur
 &nbsp;
 &nbsp;
 
-I want you to check 3 things:
-1. the **intercept parameter estimate** (fixed effect); let’s just call it **intercept**; it equals **59.37**
-2. the **intercept variance estimate** (random effect); let’s call it **_σ_<sub>between</sub>**; it equals **463.60**
+I want you to check 3 things:   
+1. the **intercept parameter estimate** (fixed effect); let’s just call it **intercept**; it equals **59.37**   
+2. the **intercept variance estimate** (random effect); let’s call it **_σ_<sub>between</sub>**; it equals **463.60**   
 3. the **residual variance estimate**; let’s call it **_σ_<sub>within</sub>**; it equals **710.70**  
 
 These are the 3 parameters your model estimated, and this number equals the total number of parameters displayed in the first table of your output (**figure 3.1.4**). If you had run a linear regression null model you would only have estimated 2 effects: an intercept parameter estimate and a residual variance estimate.
@@ -76,13 +76,13 @@ The intercept parameter estimate (fixed effect) is what the model estimates the 
 ### Unexplained what?
 The null model you ran partitioned the variance of *empty_houses* scores (our dependent variable) in within section variance (level 1 variance; **_σ_<sub>within</sub>**) and between parish variance (level 2 variance; **_σ_<sub>between</sub>**).  
 
-We can use **figure 3.1.1** to give you an intuitive notion of what these variances are. In this figure the mean distance of each small line (mean parish scores) to the big black line (sample overall mean) gives you a proxy of level 2 variance. If the little lines are very far away from the big line, there’s a lot of level 2 variance. The lower the models estimates level 2 variance, the better you know about why empty houses mean scores vary between parishes.  
+We can use **figure 3.1.1** to get an intuitive notion of what these variances are. In this figure the mean distance of each small line (mean parish scores) to the big black line (sample overall mean) gives you a proxy of level 2 variance. If the little lines are very far away from the big line, there’s a lot of level 2 variance. The lower the models estimates level 2 variance, the better you know about why empty houses mean scores vary between parishes.  
 
 The mean distance of each circle to the corresponding parish mean (little lines) gives you a proxy of level 1 variance. If these distances are big, there is a lot of level 1 variance in our dependent variable. Meaning that empty house numbers within each parish vary a lot for reasons (variables) we haven’t accounted for.  
 
 If you had run a null regression model (no mixed stuff), the estimated intercept would equal the *empty_houses* sample mean (**47.64**), and you would only have one type of residual. These residuals are computed from the difference between *empty_houses* scores and the sample mean. If there is only one type of residual there is only one type of variance. This variance approximates the total variance estimated by the null mixed model (sum of **_σ_<sub>within</sub>** and **_σ_<sub>between</sub>**) – why they are not exactly the same involves an elaborated mathematical explanation that you will have to find somewhere else because it is beyond my reach.  
 
-By the way, you can actually use the **Linear Mixed Models dialog boxes** to do your linear models (ANOVAs, regressions, ANCOVAs, etc.). Just restore the **Linear Mixed Models: Random Effects dialog box** to how you first found it. This will remove the random effects of your model, and just leave you with fixed effects (as in ANOVAs, regressions, ANCOVAs, etc.). This just shows you that linear models and linear mixed are like close cousins – do you prefer the black and white kind of cousin? Or do you prefer the flexible, shades of grey kind of cousin? With this small trick, if you like to experiment with your data, you can shift between linear models and linear mixed models to compare model estimates – if estimates don’t differ that much maybe you don’t need a mixed model after all (eat that Reviewer 1!).  
+By the way, you can actually use the **Linear Mixed Models dialog boxes** to do your linear models (ANOVAs, regressions, ANCOVAs, etc.). Just restore the **Linear Mixed Models: Random Effects dialog box** to how you first found it. This will remove the random effects of your model, and just leave you with fixed effects (as in ANOVAs, regressions, ANCOVAs, etc.). This just shows you that linear models and linear mixed are like close cousins – do you prefer the square kind of cousin? Or do you prefer the flexible, shades of grey kind of cousin? With this small trick, if you like to experiment with your data, you can shift between linear models and linear mixed models to compare model estimates – if estimates don’t differ that much maybe you don’t need a mixed model after all (eat that Reviewer 1!).  
 &nbsp;
 &nbsp;
 
@@ -121,7 +121,7 @@ The first table of the output refers to the number of parameter estimates (**fig
 
 Now let’s look at the fixed effects tables (**figure 3.2.3**). There’s an ANOVA like table (with F tests; top) and a regression like table (t tests; bottom). Look at the *p* value of the *illiterate* fixed effect in both tables – it’s the same (**.014**). This will not always be the case, but we'll get back to this later when we find a difference (believe me, we will).  
 
-One advantage of reporting regression coefficients is that they allow us a practical interpretation of the *illiterate* effect: an **increase in 1 illiterate resident** in a parish section is associated with a **decrease (negative estimate) of .13 empty houses** (**-.128** to be more precise). So you need about 8 illiterate residents to take an empty house out of the market (bad joke?).  
+One advantage of reporting regression coefficients is that they allow a practical interpretation of the *illiterate* effect: an **increase in 1 illiterate resident** in a parish section is associated with a **decrease (negative estimate) of .13 empty houses** (**-.128** to be more precise). So you need about 8 illiterate residents to take an empty house out of the market (bad joke?).  
 
 The **intercept fixed effect** was estimated as **61.14**. **Intercept** regression coefficients (coming from a mixed model or not) represent the **estimated mean score** of the dependent variable when **all predictor variables are 0**. So here, 61.14 is the model estimated mean number of empty houses for sections with 0 (zero) illiterate residents.  
 
@@ -140,11 +140,11 @@ Take a look at the **figure 3.2.4**. It’s a plot of predicted number of empty 
 &nbsp;
 &nbsp;
 
-One thing you can notice is that **all lines are parallel**. If you look at the regression equations boxes, you’ll find that all have this common part: **-.13*x**. This part of the equation defines the slope of the lines. The minus sign tells you that the lines have a negative slope (they go down from left to right). The same slope (-.13) makes them lines parallel!  
+One thing you can notice is that **all lines are parallel**. If you look at the regression equations boxes, you’ll find that they all have this common part: **-.13*x**. This part of the equation defines the slope of the lines. The minus sign tells you that the lines have a negative slope (they go down from left to right). The same slope (-.13) *"makes them lines parallel"*!  
 
-Does **-.13** ring any bell? -.13 (-.128 to be more precise) is the estimated fixed effect of the *illiterate* covariate that we talked about above (**figure 3.2.3**). It’s a **fixed effect** because the **effect of _illiterate_ is the same for all parishes** (our level 2 unit): the -0.13*x is in every regression equation (it’s fixed! How fixe is that?).  
+Does **-.13** ring any bell? -.13 (-.128 to be more precise) is the estimated fixed effect of the *illiterate* covariate that we talked about above (**figure 3.2.3**). It’s a **fixed effect** because the **effect of _illiterate_ is the same for all parishes** (our level 2 unit): the -0.13*x is in every regression equation (it’s fixed!).  
 
-The other thing I want you to see is that all lines cross the vertical axis at different points. Lines cross the vertical axis when the predictor variable equals 0. Does this ring another bell? An intercept is an estimated value of the dependent variable when the predictor(s) variable(s) take(s) the value of 0. Every parish gets a different intercept. In the random intercept model intercepts are allowed to randomly vary from an overall value, that we baptized as the intercept fixed effect (**61.14**; *figure 3.2.3*).  
+The other thing I want you to see is that all lines cross the vertical axis at different points. Lines cross the vertical axis when the predictor variable equals 0. Does this ring another bell? An intercept is an estimated value of the dependent variable when the predictor(s) variable(s) take(s) the value of 0. Every parish gets a different intercept. In the random intercept model, intercepts are allowed to randomly vary from an overall value- the intercept fixed effect (**61.14**; *figure 3.2.3*).  
 
 How much the different intercepts differ from the overall estimated mean is given by the estimated variance of the random effect (remember the **_σ_<sub>between</sub>). For this model, this is estimated at **453.05** (check the last table of your output; **figure 3.2.5**). You can use some Bayesian statistical procedures (that I have no clue about) to identify which parishes’ intercepts significantly differ from one another (in terms of the number of empty houses), if that's your thing.  
 
@@ -162,7 +162,7 @@ To recap, null model: **_σ_<sub>between</sub>** = 463.60 (level 2), **_σ_<sub>
 &nbsp;
 
 ## 3.3 Disaggregating within and between groups covariate effects.
-Do you remember the story about the ecological fallacy and the Simpson paradox Wikipedia page? A covariate can show a completely different effect within or between groups. To test whether this is happening to our covariate we need to disaggregate the within and between group effects.  
+Do you remember the story about the ecological fallacy and the Simpson paradox Wikipedia page (section 1)? A covariate can show a completely different effect within or between groups. To test whether this is happening to our covariate we need to disaggregate the within and between group effects.  
 
 You can do this by using an *illiterate* aggregate variable that has the same value for every section within each parish (remember the **Data > Aggregate** commands to compute mean values?). In our dataset this variable already exists: I’ve named it *illiterate_between* (it’s just the parish *illiterate* mean scores). This variable is a level 2 variable that will model the between groups effect, while the *illiterate* scores (level 1 variable) will model the within group effect.  
 
@@ -170,11 +170,11 @@ Let’s call this model, **model 2**. It is still a random intercept model that 
 1. add *illiterate_between* to the **Covariate(s) box** in the **Linear Mixed Models dialog box**
 2. then click on the **Fixed button** on your right
 3. and add the main effect of **illiterate** and **illiterate_between** to the **Model box**
-4. the rest do has you’ve done in model 1 (**figure 3.2.1**)  
+4. the rest do as you’ve done in model 1 (**figure 3.2.1**)  
 
 The first table of the output shows you the 5 parameters you estimated (the ones I just mentioned). By now you’ve realized that I’ve been systematically ignoring the Information Criteria table. We’ll get there. But I’ll throw you a candy – it relates with the model goodness of fit and it will allow us to compare different models to see if one is “better” than the other (better as in explaining more variance; better as in giving you a better story to tell about why your dependent variable varies from case to case).  
 
-**Figure 3.3.1** shows the fixed parameter estimates of model 2. So what we got? We got significant main effect of illiterate (*p* = .025) and a non-significant effect of illiterate_between (*p* = .171) – the *p* values of the F tests and t tests are the same again.  
+**Figure 3.3.1** shows the fixed parameter estimates of model 2. So what we got? We got significant main effect of *illiterate* (*p* = .025) and a non-significant effect of *illiterate_between* (*p* = .171) – the *p* values of the F tests and t tests are the same again.  
 &nbsp;
 
 ![](images/ch3/fig_3_3_1_m2_estimates.png)
@@ -207,7 +207,7 @@ If you didn’t change the default name you should have a new *PRED_1_mean* vari
 &nbsp;
 &nbsp;
 
-The line in **figure 3.3.3** has a slope of *-.66* (a mean increase of 1 illiterate resident in a parish – one more illiterate in each section for example - associates with a mean decrease of .66 houses in the corresponding parish). Do you find any relation between **-.66** and the estimated regression estimates of illiterate (**-.118**) and illiterate_between (**-.539**; **figure 3.3.1**). No? Yes? Take a look again.  
+The line in **figure 3.3.3** has a slope of *-.66* (a mean increase of 1 illiterate resident in a parish – one more illiterate in each section for example - associates with a mean decrease of .66 houses in the corresponding parish). Do you find any relation between **-.66** and the estimated regression estimates of illiterate (**-.118**) and illiterate_between (**-.539**; **figure 3.3.1**). No? Yes? Take a second look.  
 
 If you add **-.118** and **-.539** together you get **-.657**. Round it to .66 and you get the **between groups effect** of *illiterate* scores. Another way to look at this, is that the **_illiterate_between_ effect** in this model gives you the **difference between the within group and between group effects**. Because this estimate (-.539) has an associated *p* value, you can use it to test whether the within and between group effects differ. Here that *p* value is *p* = .171. As such, within and between subjects are not statistically different. Ecological fallacy put to rest!  
 
@@ -215,7 +215,7 @@ Summing, the within and between group effects are similar (non-significant diffe
 &nbsp;
 
 
-## 3.3. Disaggregating within and between groups covariate effects: Round 2.
+### Disaggregating within and between groups covariate effects: Round 2.
 Let’s do **model 3**. Do everything you did to estimate model 2, except that **instead of** adding the *illiterate* variable to the model you **add the** *illiterate_within* variable (*illiterate* scores centered on the group mean).  
 
 Take a look at model 3 estimates (**figure 3.3.5**) and compare them with model 2 estimates (**figure 3.3.2**). The *illiterate_within* estimate in model 3 is exactly the same as in the *illiterate* estimate in model 2 (**-.118**). The *illiterate_between* estimate in model 3 is **-.656** (the slope in **figure 3.3.3**). The associated *p* value indicates that the between group effect is only marginally significant. Although much further from 0 than the *illiterate_within* estimate (more steep slope), the very high standard error “eats” away its statistical significance. Take a look at *figure 3.3.3* again. The line is steep but most points fall far from the regression line. 
@@ -225,6 +225,6 @@ Take a look at model 3 estimates (**figure 3.3.5**) and compare them with model 
 **Figure 3.3.5**. *Model 3 fixed effects’ estimates*.  
 &nbsp;
 
-Summing, **model 2 tests the difference between within and between group effects** (and whether the within effects differs from zero); **model 3 tests whether the within and between group effects differ from zero**. None is better than the other, it depends on what you want to test.  
+Summing up, **model 2 tests the difference between within and between group effects** (and whether the within effects differs from zero); **model 3 tests whether the within and between group effects differ from zero**. None is better than the other, it depends on what you want to test.  
 
 After all this, if there is no difference between both effects you may decide to drop one variable and fall back to model 1 with only the *illiterate* global effect (**figure 3.2.3**). Decisions, decisions… as much as you can, base your choices in theoretical reasons. We are all *p* hackers on the inside. Acknowledging it will help you make better life choices. More on the selection of models later.

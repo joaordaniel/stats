@@ -1,4 +1,4 @@
-#4. The Random Intercept Random Slope Model   
+# 4. The Random Intercept Random Slope Model   
 So far we have assumed that the effect of the *illiterate* covariate is the same across all parishes (remember all those parallel lines in **figure 3.3.2**?). What happens if we let the slopes vary? That is, if we let the effects of the number of illiterate residents vary from group to group?  
 
 Let’s go create **model 4**. Just follow the same steps you took for model 3. Go back to **figure 3.2.1** and to the instructions on the beginning of **section 3.3** if you feel lost. The only difference is that in the **Linear Mixed Models: Random Effects dialog box** you have to add *illiterate_within* to the **Model box** (**figure 4.1**). In the **Linear Mixed Models: Save dialog box** don’t forget to ask for **Predicted values (Predicted Values & Residuals).**  
@@ -19,7 +19,7 @@ This model has 3 fixed effects (intercept, **illiterate_within**, **illiterate_b
 
 What do you see? The lines look pretty much parallel, but in fact they aren’t (compare **figure 4.2** with **figure 3.3.2**). In **figure 4.2** you see that the last part of the regression equations (slopes), although showing very similar values are in fact different. The slopes for these parishes range from **-.09** to **-.12**, because we allowed the effects of *illiterate_within* to vary between parishes (that’s what random means in modelling language – we let things vary). They end up not varying that much, but we had to take a look.  
 
-Please check the covariance estimates table (**figure 4.3**). We now have 3 estimates there, instead of just 2 has in the previous models. The first 2 are old acquaintances of ours, the last one is a new friend – hello **_σ_<sub>slope</sub>**, this is us; us, this is **_σ_<sub>slope</sub>**.  
+Please check the covariance estimates table (**figure 4.3**). We now have 3 estimates there, instead of just 2 as in the previous models. The first 2 are old acquaintances of ours, the last one is a new friend – hello **_σ_<sub>slope</sub>**, this is us; us, this is **_σ_<sub>slope</sub>**.  
 
 This estimate tells you how much *illiterate_within* effects vary from parish to parish. The estimate is very close to 0 (**.0035**). Meaning that illiterate effects don’t vary that much (almost nothing) from parish to parish as you’ve seen from the almost parallel lines in **figure 4.2**. 
 &nbsp;
@@ -42,7 +42,7 @@ For model 3, **deviance = 10024.563**; for model 4, **deviance = 10024.482**. If
 3. open an excel file and type this formula in a cell: **=INV.CHIQ(_df_;.95)**; there’s probably a way to do this using a SPSS syntax file but so far I’m stuck with excel   
 4. where df should be replaced with the difference in the number of parameters- 1 in this example; if the formula throws an error try swapping .95 with ,95.  
 
-For a chi-square distribution with df = 1, this value is **3.84**. If the deviance difference we found (**.081**) was higher than this, then the 2 models would differ in their fit to the data. It is not, so adding the random slope to model 4 adds pretty much too… nothing! You might have expected this, when we saw that the **_σ_<sub>slope</sub> = .0035** (~0) and the lines in the figure were almost parallel.  
+For a chi-square distribution with df = 1, this value is **3.84**. If the deviance difference we found (**.081**) was higher than this, then the 2 models would differ in their fit to the data. It is not, so adding the random slope to model 4 adds pretty much to… nothing! You might have expected this, when we saw that the **_σ_<sub>slope</sub> = .0035** (~0) and the lines in the figure were almost parallel.  
 &nbsp;  
 
 ### REML and ML
