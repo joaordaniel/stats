@@ -82,7 +82,7 @@ The mean distance of each circle to the corresponding parish mean (little lines)
 
 If you had run a null regression model (no mixed stuff), the estimated intercept would equal the *empty_houses* sample mean (**47.64**), and you would only have one type of residual. These residuals are computed from the difference between *empty_houses* scores and the sample mean. If there is only one type of residual there is only one type of variance. This variance approximates the total variance estimated by the null mixed model (sum of **_σ_<sub>within</sub>** and **_σ_<sub>between</sub>**) – why they are not exactly the same involves an elaborated mathematical explanation that you will have to find somewhere else because it is beyond my reach.  
 
-By the way, you can actually use the **Linear Mixed Models dialog boxes** to do your linear models (ANOVAs, regressions, ANCOVAs, etc.). Just restore the **Linear Mixed Models: Random Effects dialog box** to how you first found it. This will remove the random effects of your model, and just leave you with fixed effects (as in ANOVAs, regressions, ANCOVAs, etc.). This just shows you that linear models and linear mixed are like close cousins – do you prefer the square kind of cousin? Or do you prefer the flexible, shades of grey kind of cousin? With this small trick, if you like to experiment with your data, you can shift between linear models and linear mixed models to compare model estimates – if estimates don’t differ that much maybe you don’t need a mixed model after all (eat that Reviewer 1!).  
+By the way, you can actually use the **Linear Mixed Models dialog boxes** to do your linear models (ANOVAs, regressions, ANCOVAs, etc.). Just restore the **Linear Mixed Models: Random Effects dialog box** to how you first found it. This will remove the random effects of your model, and just leave you with fixed effects (as in ANOVAs, regressions, ANCOVAs, etc.). This just shows you that linear models and linear mixed models are like close cousins – do you prefer the square kind of cousin? Or do you prefer the flexible, shades of grey kind of cousin? With this small trick, if you like to experiment with your data, you can shift between linear models and linear mixed models to compare model estimates – if estimates don’t differ that much maybe you don’t need a mixed model after all (eat that Reviewer 1!).  
 &nbsp;
 &nbsp;
 
@@ -167,10 +167,10 @@ Do you remember the story about the ecological fallacy and the Simpson paradox W
 You can do this by using an *illiterate* aggregate variable that has the same value for every section within each parish (remember the **Data > Aggregate** commands to compute mean values?). In our dataset this variable already exists: I’ve named it *illiterate_between* (it’s just the parish *illiterate* mean scores). This variable is a level 2 variable that will model the between groups effect, while the *illiterate* scores (level 1 variable) will model the within group effect.  
 
 Let’s call this model, **model 2**. It is still a random intercept model that will now have 2 predictors (instead of one as in model 1), plus the intercept, plus the level 2 variance, plus the level 1 variance (5 parameters in total). There’s no gif for this model – I’m taking off the training wheels for this one (look how much you’ve grown). Just:  
-1. add *illiterate_between* to the **Covariate(s) box** in the **Linear Mixed Models dialog box**
-2. then click on the **Fixed button** on your right
-3. and add the main effect of **illiterate** and **illiterate_between** to the **Model box**
-4. the rest do as you’ve done in model 1 (**figure 3.2.1**)  
+1. add *illiterate_between* to the **Covariate(s) box** in the **Linear Mixed Models dialog box**   
+2. then click on the **Fixed button** on your right   
+3. and add the main effect of **illiterate** and **illiterate_between** to the **Model box**   
+4. the rest do as you’ve done in model 1 (**figure 3.2.1**)   
 
 The first table of the output shows you the 5 parameters you estimated (the ones I just mentioned). By now you’ve realized that I’ve been systematically ignoring the Information Criteria table. We’ll get there. But I’ll throw you a candy – it relates with the model goodness of fit and it will allow us to compare different models to see if one is “better” than the other (better as in explaining more variance; better as in giving you a better story to tell about why your dependent variable varies from case to case).  
 

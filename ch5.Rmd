@@ -51,7 +51,7 @@ To recap, centering means you subtract some value from every score in you variab
 
 I know it will sound weird but we can also center categorical variables (*Manny say what?!?*). Use the **Transform > Recode into Different Variables command** to create a new variable called *old_buildings2*. Recode all **0s to -0.5s and 1s to 0.5s**. You can use a different coding scheme, the important part is that the midpoint between both values has to be? Want to guess? ZERO that’s right! One more thing: check in the **Variable View** pane that *old_buildings2* is now a **Scale Measure** (continuous) and not a **Nominal Measure**, please.   
 
-By adding *old_buildings2* as a covariate to the model instead of *old_buildings* as a factor, the *illiterate* fixed effect estimate will still be the estimated effect when *old_buildings2* equals 0. But  now 0 doesn’t represent any of the levels (very non-Solomonic - *“Give the baby to her, just don't split him”*)… Again, but now 0 doesn’t represent any of the levels the *illiterate* estimate, as such, it is now a main effect and not a simple main effect.  
+By adding *old_buildings2* as a covariate to the model instead of *old_buildings* as a factor, the *illiterate* fixed effect estimate will still be the estimated effect when *old_buildings2* equals 0. But  now 0 doesn’t represent any of the levels of *old_buildings2* (very non-Solomonic - *“Give the baby to her, just don't split him”*). As such, it is now a main effect and not a simple main effect.  
 
 So if you rebuild model 5 with *old_buildings2* as a covariate instead of *old_buildings* as a factor you’ll get twin *p* values for the F and t tests.  
 &nbsp;  
