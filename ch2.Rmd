@@ -1,8 +1,7 @@
 ---
-output: html_document
+title: "2. Tidying data"
 ---
 
-# 2. Tidying data
 You might be one of those humans that have access to nice, clean and organized data, ready to start your data analysis. If you are, you are missing out on the pleasures of tidying data and you can skip this section. If you are not, you either: (a) belong to the sister/brotherhood of those who delight in torturing data, or (b) you are at the bottom of the academic food chain and you don’t have anyone to do the scut work for you. Either way, mixed models require data to be organized in a specific format and the SPSS commands below might be of use to you. This is not an extensive list, but my own experienced-based choices of what might came in handy most often.  
 
 We will be using some Portugese 2011 census data I’ve downloaded from: http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos. I’ve edited the data files a bit to fit my purposes (but the data is not fake if that’s what you’re wandering – just some cuts and name changes here and there).  

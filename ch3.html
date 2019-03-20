@@ -11,11 +11,11 @@
 
 
 
-<title>ch3.utf8.md</title>
+<title>3. The Basic Two-Level Model</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -105,33 +105,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 64px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .dropdown-submenu {
   position: relative;
@@ -291,12 +291,11 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">3. The Basic Two-Level Model</h1>
 
 </div>
 
 
-<div id="the-basic-two-level-model" class="section level1">
-<h1>3. The Basic Two-Level Model</h1>
 <p>For now letâ€™s stick with datasets where the dependent variable is a continuous variable measured at the lowest level (level 1). You can use mixed models to analyse other types of data (e.g., binary, categorical â€“ the so called generalized linear mixed models), or to analyse dependent variables measured at higher levelsâ€¦ but thatâ€™s two different stories. For now we will keep it simple: continuous dependent variable, measured at level 1 and nested within level 2 units (two-level model).</p>
 <p>You will use a similar dataset to that of the previous section (<strong>lx_2011_house2.sav</strong>). You can downloaded it <a href="data/ch3/lx_2011_house2.sav">here</a>. It also refers to 2011 housing and education data for the different Lisbon parishes. I downloaded the original data from <a href="http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos">here</a> as well, tidied it a bit and computed some variables to speed up the process (just some <strong>Data &gt; Aggregate</strong> and <strong>Transform &gt; Compute</strong>, similar to what I showed you in the previous section).</p>
 <p>Letâ€™s assume for the benefit of this exercise and to avoid offenses to the mathematical gods that this data was obtained using a multistage sampling procedure. We randomly selected a number of parishes, from a larger population of parishes, and then, for the selected parishes we randomly selected a set of sections (from which we collected some data). And now, from our sample we are going to infer something for the population of parishes and samples (<em>Manny say what?!?</em>).</p>
@@ -434,7 +433,6 @@ $(document).ready(function () {
  </p>
 <p>Summing, <strong>model 2 tests the difference between within and between group effects</strong> (and whether the within effects differs from zero); <strong>model 3 tests whether the within and between group effects differ from zero</strong>. None is better than the other, it depends on what you want to test.</p>
 <p>After all this, if there is no difference between both effects you may decide to drop one variable and fall back to model 1 with only the <em>illiterate</em> global effect (<strong>figure 3.2.3</strong>). Decisions, decisionsâ€¦ as much as you can, base your choices in theoretical reasons. We are all <em>p</em> hackers on the inside. Acknowledging it will help you make better life choices. More on the selection of models later.</p>
-</div>
 </div>
 
 

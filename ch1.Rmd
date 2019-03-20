@@ -1,8 +1,7 @@
 ---
-output: html_document
+title: "1. Mixed Models – The force awakens"
 ---
 
-# 1. Mixed Models – The force awakens
 Now that the introductions are done, why do we need mixed models? I’ll give you 3 (not 13) reasons why. There are more, but I’m hoping to convince you with just 3. The first two (together with a few more) are detailed in Snijders & Bosker (2012); the last is my own pragmatic advice.  
 
 **First**: some data sets have a nested/hierarchical/multilevel structure that needs to be accounted for. Failing to do so may lead to erroneous statistical inferences about the relation between independent/predictor variables and the dependent variable. In other words, your beloved low *p* values (on which your career depends on), coming out of an ANOVA, an ANCOVA or a linear regression for instance, maybe be biased and unworthy of your trust.  
