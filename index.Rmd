@@ -1,7 +1,3 @@
----
-title: "Home"
----
-
 Hello and welcome.  
 
 Let’s start like this: mixed models also go by the name of multilevel models, hierarchical models, mixed effects models, mixed regression models, random coefficient models.  
@@ -12,4 +8,3 @@ You'll be seeing a lot images and gif files (on and endless mind-disturbing loop
 
 This tutorial is an ongoing project. It will get better with time. Suggestions, comments and corrections are really welcomed. You can email me at joaordaniel at gmail.com, or if you know your way around github do your push and pulls at https://github.com/joaordaniel/stats.  
 I’ve tried as much as I can to put things in lay terms without sacrificing too much the mathematical truth behind all this… Enjoy!
-
