@@ -2,7 +2,6 @@
 output: html_document
 ---
 
-# Hello World
 Hello and welcome.  
 
 Let’s start like this: mixed models also go by the name of multilevel models, hierarchical models, mixed effects models, mixed regression models, random coefficient models.  

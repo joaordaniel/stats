@@ -216,12 +216,18 @@ The line in **figure 3.3.3** has a slope of *-.66* (a mean increase of 1 illiter
 If you add **-.118** and **-.539** together you get **-.657**. Round it to .66 and you get the **between groups effect** of *illiterate* scores. Another way to look at this, is that the **_illiterate_between_ effect** in this model gives you the **difference between the within group and between group effects**. Because this estimate (-.539) has an associated *p* value, you can use it to test whether the within and between group effects differ. Here that *p* value is *p* = .171. As such, within and between subjects are not statistically different. Ecological fallacy put to rest!  
 
 Summing, the within and between group effects are similar (non-significant difference), and the illiterate (within) effect is different from zero. But what about the between groups effect? Is it significantly different from zero? Well, we’ll have to create a new model for that.  
+&nbsp;
 
 
 ## 3.3. Disaggregating within and between groups covariate effects: Round 2.
-Let’s do **model 3**. Do everything you did to estimate model 2, except that **instead of** adding the *illiterate* variable to the model you **replace it with** the *illiterate_within* variable (illiterate scores centered on the group mean).  
+Let’s do **model 3**. Do everything you did to estimate model 2, except that **instead of** adding the *illiterate* variable to the model you **add the** *illiterate_within* variable (*illiterate* scores centered on the group mean).  
 
-Take a look at model 3 estimates (**figure 3.3.5**) and compare them with model 2 estimates (**figure 3.3.2**). The *illiterate_within* estimate in model 3 is exactly the same as in the *illiterate* estimate in model 2 (**-.118**). The *illiterate_between* estimate in model 3 is **-.656** (the slope in **figure 3.3.3**). The associated *p* value indicates that the between group effect is only marginally significant (although much further from 0 than the *illiterate_within* estimate; the very high standard error “eats” away its statistical significance).  
+Take a look at model 3 estimates (**figure 3.3.5**) and compare them with model 2 estimates (**figure 3.3.2**). The *illiterate_within* estimate in model 3 is exactly the same as in the *illiterate* estimate in model 2 (**-.118**). The *illiterate_between* estimate in model 3 is **-.656** (the slope in **figure 3.3.3**). The associated *p* value indicates that the between group effect is only marginally significant. Although much further from 0 than the *illiterate_within* estimate (more steep slope), the very high standard error “eats” away its statistical significance. Take a look at *figure 3.3.3* again. The line is steep but most points fall far from the regression line. 
+
+![](images/ch3/fig_3_3_5_m3_estimates.png)
+
+**Figure 3.3.5**. *Model 3 fixed effects’ estimates*.  
+&nbsp;
 
 Summing, **model 2 tests the difference between within and between group effects** (and whether the within effects differs from zero); **model 3 tests whether the within and between group effects differ from zero**. None is better than the other, it depends on what you want to test.  
 
