@@ -21,6 +21,3 @@ left:
     href: ch6.html
   - text: "7. Longitudinal Data and Repeated Measures"
     href: ch7.html
-    
-output:
-  html_document:
