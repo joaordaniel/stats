@@ -2,7 +2,7 @@ name: "Linear Mixed Models"
 
 navbar:
   title: "Linear Mixed Models"
-left:
+  left:
   - text: "Welcome!"
     href: index.html
   - text: "1. Mixed Models – The force awakens"
