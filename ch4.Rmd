@@ -1,5 +1,5 @@
 ---
-title: "4. The Random Intercept Random Slope Model
+title: "4. The Random Intercept Random Slope Model"
 ---
 
 So far we have assumed that the effect of the *illiterate* covariate is the same across all parishes (remember all those parallel lines in **figure 3.3.2**?). What happens if we let the slopes vary? That is, if we let the effects of the number of illiterate residents vary from group to group?  

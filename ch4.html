@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>4. The Random Intercept Random Slope Model</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Linear Mixed Models</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">4. The Random Intercept Random Slope Model</h1>
+
+</div>
+
+
+<p>So far we have assumed that the effect of the <em>illiterate</em> covariate is the same across all parishes (remember all those parallel lines in <strong>figure 3.3.2</strong>?). What happens if we let the slopes vary? That is, if we let the effects of the number of illiterate residents vary from group to group?</p>
+<p>Letâ€™s go create <strong>model 4</strong>. Just follow the same steps you took for model 3. Go back to <strong>figure 3.2.1</strong> and to the instructions on the beginning of <strong>section 3.3</strong> if you feel lost. The only difference is that in the <strong>Linear Mixed Models: Random Effects dialog box</strong> you have to add <em>illiterate_within</em> to the <strong>Model box</strong> (<strong>figure 4.1</strong>). In the <strong>Linear Mixed Models: Save dialog box</strong> donâ€™t forget to ask for <strong>Predicted values (Predicted Values &amp; Residuals).</strong><br />
+ </p>
+<p><img src="images/ch4/fig_4_1_rslope.png" /></p>
+<p><strong>Figure 4.1</strong>. <em>Adding a random slope</em>.<br />
+ </p>
+<p>This model has 3 fixed effects (intercept, <strong>illiterate_within</strong>, <strong>illiterate_between</strong>), 2 random effects (random intercept variance and random slope variance), plus the residual variance. Letâ€™s start by looking at the plot of the predicted (<em>PRED_</em>) values first (<strong>figure 4.2</strong>).</p>
+<p><img src="images/ch4/fig_4_2_pred_rf.png" /></p>
+<p><strong>Figure 4.2</strong>. <em>Model 4: Predicted mean number of houses (random intercept and random slope model)</em>.<br />
+ </p>
+<p>What do you see? The lines look pretty much parallel, but in fact they arenâ€™t (compare <strong>figure 4.2</strong> with <strong>figure 3.3.2</strong>). In <strong>figure 4.2</strong> you see that the last part of the regression equations (slopes), although showing very similar values are in fact different. The slopes for these parishes range from <strong>-.09</strong> to <strong>-.12</strong>, because we allowed the effects of <em>illiterate_within</em> to vary between parishes (thatâ€™s what random means in modelling language â€“ we let things vary). They end up not varying that much, but we had to take a look.</p>
+<p>Please check the covariance estimates table (<strong>figure 4.3</strong>). We now have 3 estimates there, instead of just 2 has in the previous models. The first 2 are old acquaintances of ours, the last one is a new friend â€“ hello <strong><em>Ïƒ</em><sub>slope</sub></strong>, this is us; us, this is <strong><em>Ïƒ</em><sub>slope</sub></strong>.</p>
+<p>This estimate tells you how much <em>illiterate_within</em> effects vary from parish to parish. The estimate is very close to 0 (<strong>.0035</strong>). Meaning that illiterate effects donâ€™t vary that much (almost nothing) from parish to parish as youâ€™ve seen from the almost parallel lines in <strong>figure 4.2</strong>.  </p>
+<p><img src="images/ch4/fig_4_3_random.png" /></p>
+<p><strong>Figure 4.3</strong>. Model 4: variance estimates.<br />
+ </p>
+<div id="comparing-models-the-information-criteria-table" class="section level2">
+<h2>4.1 Comparing models: the Information Criteria table</h2>
+<p>So, we started with model 3 and then added a random slope to our model (model 4). We have the same fixed predictors in both models (<em>illiterate_between</em> and <em>illiterate_within</em>), but one more random effect in model 4. Can we test whether model 4 is â€œbetterâ€ than model 3. YES WE CAN!</p>
+<p>Go back to the output of model 3 (whereâ€™s that? Nevermindâ€¦). The different indices in one <strong>Information Criteria</strong> tables are all similar to one another. These raw values in themselves donâ€™t tell us much, but we can compare Information Criteria values from different models to see if adding/removing fixed and random effects improves model fit. The lower these indices are, the better. That is, a model with lower indices is a better fit to your data than a model with higher indices (better fit equals to explaining better why the dependent variable scores vary from case to case).</p>
+<p>Getting back to our models 3 and 4. Letâ€™s look at the first value of Information Criteria tables: <strong>-2 Restricted Log Likelihood</strong> values, aka -2LL, aka <strong>Deviance</strong>. Because models 3 and 4 have the same fixed effects (intercept, <em>illiterate_within</em>, <em>illiterate_between</em>) and differ only on the random part (model 4 has 1 random slope that is absent in model 3) we can use the difference of deviance values to test whether one model fits better than the other.</p>
+<p>For model 3, <strong>deviance = 10024.563</strong>; for model 4, <strong>deviance = 10024.482</strong>. If you subtract model 3 deviance from model 4 deviance you get <em>.081</em> (adding parameters is supposed to lower information criteria). This difference has a chi-square distribution. The degrees of freedom of this distribution equal the difference in the number of parameters (1 in this case â€“ the random slope). What this means is that you can use a chi-square test to test whether the goodness of fit of 2 models differ. Repeat after me:<br />
+1. compute the deviance difference<br />
+2. subtract the number of parameters<br />
+3. open an excel file and type this formula in a cell: <strong>=INV.CHIQ(<em>df</em>;.95)</strong>; thereâ€™s probably a way to do this using a SPSS syntax file but so far Iâ€™m stuck with excel<br />
+4. where df should be replaced with the difference in the number of parameters- 1 in this example; if the formula throws an error try swapping .95 with ,95.</p>
+<p>For a chi-square distribution with df = 1, this value is <strong>3.84</strong>. If the deviance difference we found (<strong>.081</strong>) was higher than this, then the 2 models would differ in their fit to the data. It is not, so adding the random slope to model 4 adds pretty much tooâ€¦ nothing! You might have expected this, when we saw that the <strong><em>Ïƒ</em><sub>slope</sub> = .0035</strong> (~0) and the lines in the figure were almost parallel.<br />
+ </p>
+<div id="reml-and-ml" class="section level3">
+<h3>REML and ML</h3>
+<p>In the <strong>Linear Mixed Models dialog box</strong> where we specify our models, thereâ€™s a button there (<strong>Estimation</strong>) that gives you access to the <strong>Linear Mixed Models: Estimation dialog box</strong>. Using an auto-mechanics analogy, this is what is under the hood. You can choose two estimation options in the <strong>Method section</strong>: REML or ML. REML is the default. I canâ€™t explain how they differ (yet!). The explanation gets a bit technical and I donâ€™t understand it well enough to try and explain it to you in friendly terms.</p>
+<p>As far as I have been “told”, REML is better when sample sizes are small (how small is smallâ€¦ wellâ€¦ <em>â€œHave you noticed how good the weather has been lately?â€</em>). ML is better when â€¦ (<em>â€œIt feels almost like summer donâ€™t you think?â€</em>). When the sample sizes are big, REML and ML are expected to give very similar results. Thatâ€™s another advantage of BIG data samples â€“ you can pretty much hit buttons at random that results will always look nice.</p>
+<p>On a more serious note. The take home message is: 1. If you want to <strong>compare</strong> the fit (compare deviances) of models (from the same data!) with the <strong>same fixed effects but with different numbers of random effects</strong>, you should <strong>use REML</strong> to estimate both models; 2. if you want to <strong>compare</strong> the fit of models (from the same dataset!) with the <strong>same random effects but with different fixed effects</strong>, you should use ML instead. The reason for this is thatâ€¦ (<em>â€œDo you think it will rain next week?â€</em> â€¦ got you!).</p>
+<p>Snijders &amp; Bosker (2012) provide a set of guiding rules on how to use deviance tests to build your models and decide which variables to keep/drop. The list is long and Iâ€™ll eventually summarize it here, but for now Iâ€™ll just point the way. Start with fixed effects and interactions that are theoretically meaningful and then add/test one random slope at a time. Donâ€™t go adding a lot of random effects to your models at once (this is one I memorized), it will likely cause SPSS to start throwing errors and warnings at you. Thereâ€™s a limit to how many random effects you can have- thereâ€™s a formula for that somewhere in Snijders &amp; Bosker (2012) (as you probably noticed, everything I donâ€™t know and/or canâ€™t explain â€“ Snijders &amp; Bosker do and can).</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

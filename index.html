@@ -11,7 +11,7 @@
 
 
 
-<title>1. Mixed Models â€“ The force awakens</title>
+<title>Home</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -291,17 +291,18 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">1. Mixed Models â€“ The force awakens</h1>
+<h1 class="title toc-ignore">Home</h1>
 
 </div>
 
 
-<p>Now that the introductions are done, why do we need mixed models? Iâ€™ll give you 3 (not 13) reasons why. There are more, but Iâ€™m hoping to convince you with just 3. The first two (together with a few more) are detailed in Snijders &amp; Bosker (2012); the last is my own pragmatic advice.</p>
-<p><strong>First</strong>: some data sets have a nested/hierarchical/multilevel structure that needs to be accounted for. Failing to do so may lead to erroneous statistical inferences about the relation between independent/predictor variables and the dependent variable. In other words, your beloved low <em>p</em> values (on which your career depends on), coming out of an ANOVA, an ANCOVA or a linear regression for instance, maybe be biased and unworthy of your trust.<br />
-ANOVAs, ANCOVAs and linear regression analysis (three different names for pretty much the same thing, so hereafter Iâ€™ll just refer to linear regressions) assume your observations (data points) are independent of each other. If your data has a nested structure (say for example, you collected data on 100 children in 10 different schools â€“ children nested in schools), it is likely that two data points (children - lower level unit, aka micro level unit, aka secondary unit) from the same higher level unit (school â€“ aka macro level unit, aka primary unit) are more similar than two data points from different higher level units. If they are, than data points (within the same higher level unit) are not independent from each other. That is, they are correlated to some extent (intra class correlation will tell you how much â€“ more on this later). This violates one important assumption of linear regression. The consequences of this non-independence, in more technical terms, is that your estimates (say, the mean test score difference between boys and girls) are more or less biased. Meaning, those precious statistically significant effects, might not be so significant after all.<br />
-Check this reference if this explanation doesnâ€™t satisfy you: <a href="https://www.tandfonline.com/doi/abs/10.1080/01443410801954201">(Dorman, 2018)</a>.</p>
-<p><strong>Second</strong>: you have to be careful with ecological fallacies. To avoid them you need to distinguish within-group (level 1) from between-group (level 2) effects. Take a look at the two images in <a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpsonâ€™s paradox Wikipedia page</a>. Both images on the right show a negative between-group effect (mean y group scores decrease as x increases) and a positive within-group group effect (within each group, y scores increase as x increases). Including just one of these effects would only give you part of the story. You donâ€™t need mixed models to disentangle these effects, but estimates using linear regressions are more biased (again, <em>p</em> values should be taken with a grain of salt) because you are attributing a group level score to the lower level unit. I know this sounds a bit sketchy but if you want to know more you can google something about the problems of aggregating variables and using a level 2 variable as a level 1 variable (if you find something that explicitly mentions Type I or Type II errors let me know, please!).</p>
-<p><strong>Third</strong>: if the reviewer, supervisor, senior colleague asks/demands, you obey. So letâ€™s do this. Mixed models are hype, and someday you will have someone asking you to reanalyse ALL your data with a mixed model. Sometimes the call will be warranted, other times not so much. Either way you will have to know what this is all about. If you do, you will be able to analyse everything all over again (priceless!!!), or youâ€™ll be able to talk your way out of it (the more jargon you use the more successfully youâ€™ll scare those wanna be reviewers, but be careful, too much bullshit and it starts to stink). So letâ€™s get our hands dirty!</p>
+<p>Hello and welcome.</p>
+<p>Letâ€™s start like this: mixed models also go by the name of multilevel models, hierarchical models, mixed effects models, mixed regression models, random coefficient models.<br />
+Many textbooks abound on this topic. If you dig in a bit youâ€™ll see that some names surface up frequently: Tom Snjiders, Joop Hox, Harvey Goldstein, Stephen Raudenbush to name a few. Most of the theoretical stuff I present here has been taken from Snijders TAB &amp; Bosker RJ (2012). [Multilevel Analysis: An Introduction to Basic and Advanced Multilevel Modeling]. The rest is bits and pieces from here and there. With time I will add references and corresponding links in the text so you can further your explorations of mixed models.<br />
+Another book that I like and that you might want to take a look at is: Heck RH, Thomas SL &amp; Tabata LN (2014). <a href="https://www.routledge.com/Multilevel-and-Longitudinal-Modeling-with-IBM-SPSS-2nd-Edition/Heck-Thomas-Tabata/p/book/9780415817110">Multilevel and Longitudinal Modeling with SPSS</a>. Itâ€™s a really nice book to get around mixed models in SPSS. Itâ€™s filled with diagrams taking you every step of the way.</p>
+<p>You’ll be seeing a lot images and gif files (on and endless mind-disturbing loop) illustrating how to use IBM SPSS to run mixed models. These images and gifs refer to IBM SPSS version 25. Different SPSS versions may show different dialog boxes. I donâ€™t expect these differences to be very dramatic, but even if they are, with a bit of patience youâ€™ll make SPSS do what you want. Remember: computers are stupid machines that just do what you tell them to do!</p>
+<p>This tutorial is an ongoing project. It will get better with time. Suggestions, comments and corrections are really welcomed. You can email me at joaordaniel at gmail.com, or if you know your way around github do your push and pulls at <a href="https://github.com/joaordaniel/stats" class="uri">https://github.com/joaordaniel/stats</a>.<br />
+Iâ€™ve tried as much as I can to put things in lay terms without sacrificing too much the mathematical truth behind all thisâ€¦ Enjoy!</p>
 
 
 

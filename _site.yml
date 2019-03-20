@@ -24,4 +24,3 @@ left:
     
 output:
   html_document:
-    theme: paper
