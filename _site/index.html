@@ -11,7 +11,7 @@
 
 
 
-<title>6. Three Level Models</title>
+<title>index.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -278,7 +278,30 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        
+        <li>
+  <a href="index.html">Welcome!</a>
+</li>
+<li>
+  <a href="ch1.html">1. Mixed Models â€“ The force awakens</a>
+</li>
+<li>
+  <a href="ch2.html">2. Tidying data</a>
+</li>
+<li>
+  <a href="ch3.html">3. The Basic Two-Level Model</a>
+</li>
+<li>
+  <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
+</li>
+<li>
+  <a href="ch5.html">5. Interaction Effects and Centering</a>
+</li>
+<li>
+  <a href="ch6.html">6. Three Level Models</a>
+</li>
+<li>
+  <a href="ch7.html">7. Longitudinal Data and Repeated Measures</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -291,18 +314,17 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">6. Three Level Models</h1>
 
 </div>
 
 
-<p>You can use mixed models to analyse more complex nested structures. For example, students, within classrooms, within schools, so on and so forth. Iâ€™ll just briefly show you how to create a 3 level, random intercept null model and then proceed to highlight a few basic details.</p>
-<p>Letâ€™s have a completely new and different dataset called <strong>lx_2011_house3.sav</strong>. You can download it <a href="data/ch6/lx_2011_house3.sav">here</a>. This dataset set has the number of 1 and 2 stories buildings in 500 sub-sections, inserted in 379 sections and 52 Lisbon parishes (this is a selection of 2011 Lisbon census data). Follow the instructions of <strong>figure 6.1</strong> if you may.</p>
-<p><img src="images/ch6/fig_6_1_level3.gif" /></p>
-<p><strong><em>Figure 6.1</em></strong>. Building a 3 level random intercept null model.  </p>
-<p>The first thing youâ€™ll see in the output is the number of parameters. We have the fixed intercept effect, random intercept variances for level 2 and level 3, and the residual variance (4 parameters total). So now we have, a level 1 variance (<strong><em>Ïƒ</em><sub>residual</sub></strong>), a level 2 variance (<strong><em>Ïƒ</em><sub>between_section</sub></strong>), and a level 3 variance (<strong><em>Ïƒ</em><sub>between_parish</sub></strong>). That is, we have unexplained variance (in the number of 1 and 2 stories building) at three different levels. This means we can compute 3 different ICCs.</p>
-<p>From the variance estimates provided in the last table: <strong><em>Ïƒ</em><sub>residual</sub></strong> = <strong>56.41</strong>, <strong><em>Ïƒ</em><sub>between_section</sub></strong> = <strong>90.87</strong> (level 2), and <strong><em>Ïƒ</em><sub>between_parish</sub></strong> = <strong>19.04</strong> (level 3). This makes the total variance = <strong>166.32</strong>. As such, <strong>33.9%</strong> (56.41 / 166.32) is level 1 variance, <strong>54.6%</strong> (90.87 / 166.32) is level 2 variance, and <strong>11.4%</strong> is level 3 variance.</p>
-<p>Now if we had, we could add predictors and look at effectsâ€™ estimates and deviance statistics of the different models as we did for 2 level models. But just a quick note related to the ecological fallacy stuff. If you have a 3 level model like this (subsection, section, parish), you can disaggregate a predictor effect in a (a) within section effect, (b) between section â€“ within parish effect, and (c) a between parish effect (neat!). Then you can have varying, interactions between variables measured at different levels, and whatelse… It can get really messy. I have very little experience with 3 level models so I wonâ€™t go further than this.</p>
+<p>Hello and welcome.</p>
+<p>Letâ€™s start like this: mixed models also go by the name of multilevel models, hierarchical models, mixed effects models, mixed regression models, random coefficient models.<br />
+Many textbooks abound on this topic. If you dig in a bit youâ€™ll see that some names surface up frequently: Tom Snjiders, Joop Hox, Harvey Goldstein, Stephen Raudenbush to name a few. Most of the theoretical stuff I present here has been taken from Snijders TAB &amp; Bosker RJ (2012). [Multilevel Analysis: An Introduction to Basic and Advanced Multilevel Modeling]. The rest is bits and pieces from here and there. With time I will add references and corresponding links in the text so you can further your explorations of mixed models.<br />
+Another book that I like and that you might want to take a look at is: Heck RH, Thomas SL &amp; Tabata LN (2014). <a href="https://www.routledge.com/Multilevel-and-Longitudinal-Modeling-with-IBM-SPSS-2nd-Edition/Heck-Thomas-Tabata/p/book/9780415817110">Multilevel and Longitudinal Modeling with SPSS</a>. Itâ€™s a really nice book to get around mixed models in SPSS. Itâ€™s filled with diagrams taking you every step of the way.</p>
+<p>You’ll be seeing a lot images and gif files (on and endless mind-disturbing loop) illustrating how to use IBM SPSS to run mixed models. These images and gifs refer to IBM SPSS version 25. Different SPSS versions may show different dialog boxes. I donâ€™t expect these differences to be very dramatic, but even if they are, with a bit of patience youâ€™ll make SPSS do what you want. Remember: computers are stupid machines that just do what you tell them to do!</p>
+<p>This tutorial is an ongoing project. It will get better with time. Suggestions, comments and corrections are really welcomed. You can email me at joaordaniel at gmail.com, or if you know your way around github do your push and pulls at <a href="https://github.com/joaordaniel/stats" class="uri">https://github.com/joaordaniel/stats</a>.<br />
+Iâ€™ve tried as much as I can to put things in lay terms without sacrificing too much the mathematical truth behind all thisâ€¦ Enjoy!</p>
 
 
 
