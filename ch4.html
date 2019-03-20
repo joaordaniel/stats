@@ -340,7 +340,7 @@ $(document).ready(function () {
 <p><strong>Figure 4.2</strong>. <em>Model 4: Predicted mean number of houses (random intercept and random slope model)</em>.<br />
  </p>
 <p>What do you see? The lines look pretty much parallel, but in fact they aren’t (compare <strong>figure 4.2</strong> with <strong>figure 3.3.2</strong>). In <strong>figure 4.2</strong> you see that the last part of the regression equations (slopes), although showing very similar values are in fact different. The slopes for these parishes range from <strong>-.09</strong> to <strong>-.12</strong>, because we allowed the effects of <em>illiterate_within</em> to vary between parishes (that’s what random means in modelling language – we let things vary). They end up not varying that much, but we had to take a look.</p>
-<p>Please check the covariance estimates table (<strong>figure 4.3</strong>). We now have 3 estimates there, instead of just 2 has in the previous models. The first 2 are old acquaintances of ours, the last one is a new friend – hello <strong><em>σ</em><sub>slope</sub></strong>, this is us; us, this is <strong><em>σ</em><sub>slope</sub></strong>.</p>
+<p>Please check the covariance estimates table (<strong>figure 4.3</strong>). We now have 3 estimates there, instead of just 2 as in the previous models. The first 2 are old acquaintances of ours, the last one is a new friend – hello <strong><em>σ</em><sub>slope</sub></strong>, this is us; us, this is <strong><em>σ</em><sub>slope</sub></strong>.</p>
 <p>This estimate tells you how much <em>illiterate_within</em> effects vary from parish to parish. The estimate is very close to 0 (<strong>.0035</strong>). Meaning that illiterate effects don’t vary that much (almost nothing) from parish to parish as you’ve seen from the almost parallel lines in <strong>figure 4.2</strong>.  </p>
 <p><img src="images/ch4/fig_4_3_random.png" /></p>
 <p><strong>Figure 4.3</strong>. Model 4: variance estimates.<br />
@@ -355,7 +355,7 @@ $(document).ready(function () {
 2. subtract the number of parameters<br />
 3. open an excel file and type this formula in a cell: <strong>=INV.CHIQ(<em>df</em>;.95)</strong>; there’s probably a way to do this using a SPSS syntax file but so far I’m stuck with excel<br />
 4. where df should be replaced with the difference in the number of parameters- 1 in this example; if the formula throws an error try swapping .95 with ,95.</p>
-<p>For a chi-square distribution with df = 1, this value is <strong>3.84</strong>. If the deviance difference we found (<strong>.081</strong>) was higher than this, then the 2 models would differ in their fit to the data. It is not, so adding the random slope to model 4 adds pretty much too… nothing! You might have expected this, when we saw that the <strong><em>σ</em><sub>slope</sub> = .0035</strong> (~0) and the lines in the figure were almost parallel.<br />
+<p>For a chi-square distribution with df = 1, this value is <strong>3.84</strong>. If the deviance difference we found (<strong>.081</strong>) was higher than this, then the 2 models would differ in their fit to the data. It is not, so adding the random slope to model 4 adds pretty much to… nothing! You might have expected this, when we saw that the <strong><em>σ</em><sub>slope</sub> = .0035</strong> (~0) and the lines in the figure were almost parallel.<br />
  </p>
 <div id="reml-and-ml" class="section level3">
 <h3>REML and ML</h3>
