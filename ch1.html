@@ -11,7 +11,7 @@
 
 
 
-<title>1. Mixed Models – The force awakens</title>
+<title>ch1.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -278,33 +278,42 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Welcome!</a>
-</li>
-<li>
-  <a href="ch1.html">1. Mixed Models – The force awakens</a>
-</li>
-<li>
-  <a href="ch2.html">2. Tidying data</a>
-</li>
-<li>
-  <a href="ch3.html">3. The Basic Two-Level Model</a>
-</li>
-<li>
-  <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
-</li>
-<li>
-  <a href="ch5.html">5. Interaction Effects and Centering</a>
-</li>
-<li>
-  <a href="ch6.html">6. Three Level Models</a>
-</li>
-<li>
-  <a href="ch7.html">7. Longitudinal Data and Repeated Measures</a>
-</li>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="index.html">Welcome</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="ch1.html">1. Mixed Models – why?</a>
+    </li>
+    <li>
+      <a href="ch2.html">2. Tidying data</a>
+    </li>
+    <li>
+      <a href="ch3.html">3. The Basic Two-Level Model</a>
+    </li>
+    <li>
+      <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
+    </li>
+    <li>
+      <a href="ch5.html">5. Interaction Effects and Centering</a>
+    </li>
+    <li>
+      <a href="ch6.html">6. Three Level Models</a>
+    </li>
+    <li>
+      <a href="ch7.html">7. Longitudinal Data / Repeated Measures</a>
+    </li>
+  </ul>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -314,17 +323,19 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">1. Mixed Models – The force awakens</h1>
 
 </div>
 
 
+<div id="mixed-models-why" class="section level1">
+<h1>1. Mixed Models – why?</h1>
 <p>Now that the introductions are done, why do we need mixed models? I’ll give you 3 (not 13) reasons why. There are more, but I’m hoping to convince you with just 3. The first two (together with a few more) are detailed in Snijders &amp; Bosker (2012); the last is my own pragmatic advice.</p>
 <p><strong>First</strong>: some data sets have a nested/hierarchical/multilevel structure that needs to be accounted for. Failing to do so may lead to erroneous statistical inferences about the relation between independent/predictor variables and the dependent variable. In other words, your beloved low <em>p</em> values (on which your career depends on), coming out of an ANOVA, an ANCOVA or a linear regression for instance, maybe be biased and unworthy of your trust.<br />
 ANOVAs, ANCOVAs and linear regression analysis (three different names for pretty much the same thing, so hereafter I’ll just refer to linear regressions) assume your observations (data points) are independent of each other. If your data has a nested structure (say for example, you collected data on 100 children in 10 different schools – children nested in schools), it is likely that two data points (children - lower level unit, aka micro level unit, aka secondary unit) from the same higher level unit (school – aka macro level unit, aka primary unit) are more similar than two data points from different higher level units. If they are, than data points (within the same higher level unit) are not independent from each other. That is, they are correlated to some extent (intra class correlation will tell you how much – more on this later). This violates one important assumption of linear regression. The consequences of this non-independence, in more technical terms, is that your estimates (say, the mean test score difference between boys and girls) are more or less biased. Meaning, those precious statistically significant effects, might not be so significant after all.<br />
 Check this reference if this explanation doesn’t satisfy you: <a href="https://www.tandfonline.com/doi/abs/10.1080/01443410801954201">(Dorman, 2018)</a>.</p>
 <p><strong>Second</strong>: you have to be careful with ecological fallacies. To avoid them you need to distinguish within-group (level 1) from between-group (level 2) effects. Take a look at the two images in <a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson’s paradox Wikipedia page</a>. Both images on the right show a negative between-group effect (mean y group scores decrease as x increases) and a positive within-group group effect (within each group, y scores increase as x increases). Including just one of these effects would only give you part of the story. You don’t need mixed models to disentangle these effects, but estimates using linear regressions are more biased (again, <em>p</em> values should be taken with a grain of salt) because you are attributing a group level score to the lower level unit. I know this sounds a bit sketchy but if you want to know more you can google something about the problems of aggregating variables and using a level 2 variable as a level 1 variable (if you find something that explicitly mentions Type I or Type II errors let me know, please!).</p>
 <p><strong>Third</strong>: if the reviewer, supervisor, senior colleague asks/demands, you obey. So let’s do this. Mixed models are hype, and someday you will have someone asking you to reanalyse ALL your data with a mixed model. Sometimes the call will be warranted, other times not so much. Either way you will have to know what this is all about. If you do, you will be able to analyse everything all over again (priceless!!!), or you’ll be able to talk your way out of it (the more jargon you use the more successfully you’ll scare those wanna be reviewers, but be careful, too much bullshit and it starts to stink). So let’s get our hands dirty!</p>
+</div>
 
 
 

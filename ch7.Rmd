@@ -1,7 +1,4 @@
----
-title: "7. Longitudinal Data / Repeated Measures"
----
-
+#7. Longitudinal Data / Repeated Measures   
 Repeated measures data, which includes longitudinal data, is just another type of multilevel data. You have different observations nested within subjects. Here observations are level 1 data, and subjects level 2 data. You can use everything we learned so far about 2 level models to model repeated measures data.  
 
 Before we continue, I just want to give you my explanation why there’s a slash between longitudinal data and repeated measures. For those of you coming from experimental psychology you probably associate repeated measures to data collected from different conditions in an experiment (say, cond1, cond2, and cond3) that all participants have to go through. But not all participants go through these conditions in the same order – you generally randomize the order of the conditions to control for order effects. So one participant does, cond3, cond2 and cond1, other does cond2, cond1, cond3, etc, etc…   

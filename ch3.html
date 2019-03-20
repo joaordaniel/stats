@@ -11,7 +11,7 @@
 
 
 
-<title>3. The Basic Two-Level Model</title>
+<title>ch3.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -278,33 +278,42 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Welcome!</a>
-</li>
-<li>
-  <a href="ch1.html">1. Mixed Models – The force awakens</a>
-</li>
-<li>
-  <a href="ch2.html">2. Tidying data</a>
-</li>
-<li>
-  <a href="ch3.html">3. The Basic Two-Level Model</a>
-</li>
-<li>
-  <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
-</li>
-<li>
-  <a href="ch5.html">5. Interaction Effects and Centering</a>
-</li>
-<li>
-  <a href="ch6.html">6. Three Level Models</a>
-</li>
-<li>
-  <a href="ch7.html">7. Longitudinal Data and Repeated Measures</a>
-</li>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="index.html">Welcome</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="ch1.html">1. Mixed Models – why?</a>
+    </li>
+    <li>
+      <a href="ch2.html">2. Tidying data</a>
+    </li>
+    <li>
+      <a href="ch3.html">3. The Basic Two-Level Model</a>
+    </li>
+    <li>
+      <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
+    </li>
+    <li>
+      <a href="ch5.html">5. Interaction Effects and Centering</a>
+    </li>
+    <li>
+      <a href="ch6.html">6. Three Level Models</a>
+    </li>
+    <li>
+      <a href="ch7.html">7. Longitudinal Data / Repeated Measures</a>
+    </li>
+  </ul>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -314,11 +323,12 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">3. The Basic Two-Level Model</h1>
 
 </div>
 
 
+<div id="the-basic-two-level-model" class="section level1">
+<h1>3. The Basic Two-Level Model</h1>
 <p>For now let’s stick with datasets where the dependent variable is a continuous variable measured at the lowest level (level 1). You can use mixed models to analyse other types of data (e.g., binary, categorical – the so called generalized linear mixed models), or to analyse dependent variables measured at higher levels… but that’s two different stories. For now we will keep it simple: continuous dependent variable, measured at level 1 and nested within level 2 units (two-level model).</p>
 <p>You will use a similar dataset to that of the previous section (<strong>lx_2011_house2.sav</strong>). You can downloaded it <a href="data/ch3/lx_2011_house2.sav">here</a>. It also refers to 2011 housing and education data for the different Lisbon parishes. I downloaded the original data from <a href="http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos">here</a> as well, tidied it a bit and computed some variables to speed up the process (just some <strong>Data &gt; Aggregate</strong> and <strong>Transform &gt; Compute</strong>, similar to what I showed you in the previous section).</p>
 <p>Let’s assume for the benefit of this exercise and to avoid offenses to the mathematical gods that this data was obtained using a multistage sampling procedure. We randomly selected a number of parishes, from a larger population of parishes, and then, for the selected parishes we randomly selected a set of sections (from which we collected some data). And now, from our sample we are going to infer something for the population of parishes and samples (<em>Manny say what?!?</em>).</p>
@@ -456,6 +466,7 @@ $(document).ready(function () {
  </p>
 <p>Summing, <strong>model 2 tests the difference between within and between group effects</strong> (and whether the within effects differs from zero); <strong>model 3 tests whether the within and between group effects differ from zero</strong>. None is better than the other, it depends on what you want to test.</p>
 <p>After all this, if there is no difference between both effects you may decide to drop one variable and fall back to model 1 with only the <em>illiterate</em> global effect (<strong>figure 3.2.3</strong>). Decisions, decisions… as much as you can, base your choices in theoretical reasons. We are all <em>p</em> hackers on the inside. Acknowledging it will help you make better life choices. More on the selection of models later.</p>
+</div>
 </div>
 
 

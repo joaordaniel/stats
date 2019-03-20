@@ -1,8 +1,4 @@
----
-title: "3. The Basic Two-Level Model"
----
-
-
+# 3. The Basic Two-Level Model   
 For now let’s stick with datasets where the dependent variable is a continuous variable measured at the lowest level (level 1). You can use mixed models to analyse other types of data (e.g., binary, categorical – the so called generalized linear mixed models), or to analyse dependent variables measured at higher levels… but that’s two different stories. For now we will keep it simple: continuous dependent variable, measured at level 1 and nested within level 2 units (two-level model).  
 
 You will use a similar dataset to that of the previous section (**lx_2011_house2.sav**). You can downloaded it [here](data/ch3/lx_2011_house2.sav). It also refers to 2011 housing and education data for the different Lisbon parishes. I downloaded the original data from [here](http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos) as well, tidied it a bit and computed some variables to speed up the process (just some **Data > Aggregate** and **Transform > Compute**, similar to what I showed you in the previous section).  

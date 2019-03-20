@@ -1,7 +1,4 @@
----
-title: "4. The Random Intercept Random Slope Model"
----
-
+#4. The Random Intercept Random Slope Model   
 So far we have assumed that the effect of the *illiterate* covariate is the same across all parishes (remember all those parallel lines in **figure 3.3.2**?). What happens if we let the slopes vary? That is, if we let the effects of the number of illiterate residents vary from group to group?  
 
 Let’s go create **model 4**. Just follow the same steps you took for model 3. Go back to **figure 3.2.1** and to the instructions on the beginning of **section 3.3** if you feel lost. The only difference is that in the **Linear Mixed Models: Random Effects dialog box** you have to add *illiterate_within* to the **Model box** (**figure 4.1**). In the **Linear Mixed Models: Save dialog box** don’t forget to ask for **Predicted values (Predicted Values & Residuals).**  

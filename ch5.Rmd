@@ -1,8 +1,4 @@
----
-title: "5. Interaction Effects and Centering"
----
-
-
+# 5. Interaction Effects and Centering   
 Let’s do model 5!  
 
 For this model our predictors will be *illiterate* (a covariate variable) and *old_buildings* (a categorical variable/factor indicating whether or not there are a lot of old building in a parish). Here we will ignore the within/between effect difference for *illiterate* and focus on the overall effect (without disaggregation). As a recap, the *illiterate* variable refers to level 1 units (sections) and the the *old_buildings* factor refers to level 2 units (parishes).  

@@ -11,7 +11,7 @@
 
 
 
-<title>6. Three Level Models</title>
+<title>ch6.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -278,33 +278,42 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Welcome!</a>
-</li>
-<li>
-  <a href="ch1.html">1. Mixed Models – The force awakens</a>
-</li>
-<li>
-  <a href="ch2.html">2. Tidying data</a>
-</li>
-<li>
-  <a href="ch3.html">3. The Basic Two-Level Model</a>
-</li>
-<li>
-  <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
-</li>
-<li>
-  <a href="ch5.html">5. Interaction Effects and Centering</a>
-</li>
-<li>
-  <a href="ch6.html">6. Three Level Models</a>
-</li>
-<li>
-  <a href="ch7.html">7. Longitudinal Data and Repeated Measures</a>
-</li>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="index.html">Welcome</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="ch1.html">1. Mixed Models – why?</a>
+    </li>
+    <li>
+      <a href="ch2.html">2. Tidying data</a>
+    </li>
+    <li>
+      <a href="ch3.html">3. The Basic Two-Level Model</a>
+    </li>
+    <li>
+      <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
+    </li>
+    <li>
+      <a href="ch5.html">5. Interaction Effects and Centering</a>
+    </li>
+    <li>
+      <a href="ch6.html">6. Three Level Models</a>
+    </li>
+    <li>
+      <a href="ch7.html">7. Longitudinal Data / Repeated Measures</a>
+    </li>
+  </ul>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -314,11 +323,12 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">6. Three Level Models</h1>
 
 </div>
 
 
+<div id="three-level-models" class="section level1">
+<h1>6. Three Level Models</h1>
 <p>You can use mixed models to analyse more complex nested structures. For example, students, within classrooms, within schools, so on and so forth. I’ll just briefly show you how to create a 3 level, random intercept null model and then proceed to highlight a few basic details.</p>
 <p>Let’s have a completely new and different dataset called <strong>lx_2011_house3.sav</strong>. You can download it <a href="data/ch6/lx_2011_house3.sav">here</a>. This dataset set has the number of 1 and 2 stories buildings in 500 sub-sections, inserted in 379 sections and 52 Lisbon parishes (this is a selection of 2011 Lisbon census data). Follow the instructions of <strong>figure 6.1</strong> if you may.</p>
 <p><img src="images/ch6/fig_6_1_level3.gif" /></p>
@@ -326,6 +336,7 @@ $(document).ready(function () {
 <p>The first thing you’ll see in the output is the number of parameters. We have the fixed intercept effect, random intercept variances for level 2 and level 3, and the residual variance (4 parameters total). So now we have, a level 1 variance (<strong><em>σ</em><sub>residual</sub></strong>), a level 2 variance (<strong><em>σ</em><sub>between_section</sub></strong>), and a level 3 variance (<strong><em>σ</em><sub>between_parish</sub></strong>). That is, we have unexplained variance (in the number of 1 and 2 stories building) at three different levels. This means we can compute 3 different ICCs.</p>
 <p>From the variance estimates provided in the last table: <strong><em>σ</em><sub>residual</sub></strong> = <strong>56.41</strong>, <strong><em>σ</em><sub>between_section</sub></strong> = <strong>90.87</strong> (level 2), and <strong><em>σ</em><sub>between_parish</sub></strong> = <strong>19.04</strong> (level 3). This makes the total variance = <strong>166.32</strong>. As such, <strong>33.9%</strong> (56.41 / 166.32) is level 1 variance, <strong>54.6%</strong> (90.87 / 166.32) is level 2 variance, and <strong>11.4%</strong> is level 3 variance.</p>
 <p>Now if we had, we could add predictors and look at effects’ estimates and deviance statistics of the different models as we did for 2 level models. But just a quick note related to the ecological fallacy stuff. If you have a 3 level model like this (subsection, section, parish), you can disaggregate a predictor effect in a (a) within section effect, (b) between section – within parish effect, and (c) a between parish effect (neat!). Then you can have varying, interactions between variables measured at different levels, and whatelse… It can get really messy. I have very little experience with 3 level models so I won’t go further than this.</p>
+</div>
 
 
 

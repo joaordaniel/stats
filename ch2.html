@@ -11,7 +11,7 @@
 
 
 
-<title>2. Tidying data</title>
+<title>ch2.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -278,33 +278,42 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Welcome!</a>
-</li>
-<li>
-  <a href="ch1.html">1. Mixed Models – The force awakens</a>
-</li>
-<li>
-  <a href="ch2.html">2. Tidying data</a>
-</li>
-<li>
-  <a href="ch3.html">3. The Basic Two-Level Model</a>
-</li>
-<li>
-  <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
-</li>
-<li>
-  <a href="ch5.html">5. Interaction Effects and Centering</a>
-</li>
-<li>
-  <a href="ch6.html">6. Three Level Models</a>
-</li>
-<li>
-  <a href="ch7.html">7. Longitudinal Data and Repeated Measures</a>
-</li>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="index.html">Welcome</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="ch1.html">1. Mixed Models – why?</a>
+    </li>
+    <li>
+      <a href="ch2.html">2. Tidying data</a>
+    </li>
+    <li>
+      <a href="ch3.html">3. The Basic Two-Level Model</a>
+    </li>
+    <li>
+      <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
+    </li>
+    <li>
+      <a href="ch5.html">5. Interaction Effects and Centering</a>
+    </li>
+    <li>
+      <a href="ch6.html">6. Three Level Models</a>
+    </li>
+    <li>
+      <a href="ch7.html">7. Longitudinal Data / Repeated Measures</a>
+    </li>
+  </ul>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -314,11 +323,12 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">2. Tidying data</h1>
 
 </div>
 
 
+<div id="tidying-data" class="section level1">
+<h1>2. Tidying data</h1>
 <p>You might be one of those humans that have access to nice, clean and organized data, ready to start your data analysis. If you are, you are missing out on the pleasures of tidying data and you can skip this section. If you are not, you either: (a) belong to the sister/brotherhood of those who delight in torturing data, or (b) you are at the bottom of the academic food chain and you don’t have anyone to do the scut work for you. Either way, mixed models require data to be organized in a specific format and the SPSS commands below might be of use to you. This is not an extensive list, but my own experienced-based choices of what might came in handy most often.</p>
 <p>We will be using some Portugese 2011 census data I’ve downloaded from: <a href="http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos" class="uri">http://lisboaaberta.cm-lisboa.pt/index.php/pt/dados/catalogo-de-dados-abertos</a>. I’ve edited the data files a bit to fit my purposes (but the data is not fake if that’s what you’re wandering – just some cuts and name changes here and there).</p>
 <p>You can download the datasets we’ll use from here: <a href="data/ch2/lx_2011_edu.sav">lx_2011_edu.sav</a> and here: <a href="data/ch2/lx_2011_housing.sav">lx_2011_housing.sav</a>.</p>
@@ -374,6 +384,7 @@ If you have large datasets, merging can save you a lot a time. Also, you might n
 <p><img src="images/ch2/fig2_3_2_restructure.gif" /></p>
 <p><strong>Figure 2.3.2</strong>. <em>Restructuring data</em>.    </p>
 <p>This pretty much covers some of the basics of tidying your data in SPSS. You’ll probably use other generic <strong>Data</strong> and <strong>Transform</strong> commands as well, but those are probably more familiar to you.</p>
+</div>
 </div>
 
 

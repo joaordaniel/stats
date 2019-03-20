@@ -11,7 +11,7 @@
 
 
 
-<title>4. The Random Intercept Random Slope Model</title>
+<title>ch4.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -278,33 +278,42 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Welcome!</a>
-</li>
-<li>
-  <a href="ch1.html">1. Mixed Models – The force awakens</a>
-</li>
-<li>
-  <a href="ch2.html">2. Tidying data</a>
-</li>
-<li>
-  <a href="ch3.html">3. The Basic Two-Level Model</a>
-</li>
-<li>
-  <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
-</li>
-<li>
-  <a href="ch5.html">5. Interaction Effects and Centering</a>
-</li>
-<li>
-  <a href="ch6.html">6. Three Level Models</a>
-</li>
-<li>
-  <a href="ch7.html">7. Longitudinal Data and Repeated Measures</a>
-</li>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="index.html">Welcome</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="ch1.html">1. Mixed Models – why?</a>
+    </li>
+    <li>
+      <a href="ch2.html">2. Tidying data</a>
+    </li>
+    <li>
+      <a href="ch3.html">3. The Basic Two-Level Model</a>
+    </li>
+    <li>
+      <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
+    </li>
+    <li>
+      <a href="ch5.html">5. Interaction Effects and Centering</a>
+    </li>
+    <li>
+      <a href="ch6.html">6. Three Level Models</a>
+    </li>
+    <li>
+      <a href="ch7.html">7. Longitudinal Data / Repeated Measures</a>
+    </li>
+  </ul>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -314,12 +323,12 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">4. The Random Intercept Random Slope Model</h1>
 
 </div>
 
 
-<p>So far we have assumed that the effect of the <em>illiterate</em> covariate is the same across all parishes (remember all those parallel lines in <strong>figure 3.3.2</strong>?). What happens if we let the slopes vary? That is, if we let the effects of the number of illiterate residents vary from group to group?</p>
+<p>#4. The Random Intercept Random Slope Model<br />
+So far we have assumed that the effect of the <em>illiterate</em> covariate is the same across all parishes (remember all those parallel lines in <strong>figure 3.3.2</strong>?). What happens if we let the slopes vary? That is, if we let the effects of the number of illiterate residents vary from group to group?</p>
 <p>Let’s go create <strong>model 4</strong>. Just follow the same steps you took for model 3. Go back to <strong>figure 3.2.1</strong> and to the instructions on the beginning of <strong>section 3.3</strong> if you feel lost. The only difference is that in the <strong>Linear Mixed Models: Random Effects dialog box</strong> you have to add <em>illiterate_within</em> to the <strong>Model box</strong> (<strong>figure 4.1</strong>). In the <strong>Linear Mixed Models: Save dialog box</strong> don’t forget to ask for <strong>Predicted values (Predicted Values &amp; Residuals).</strong><br />
  </p>
 <p><img src="images/ch4/fig_4_1_rslope.png" /></p>

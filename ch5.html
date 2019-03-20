@@ -11,7 +11,7 @@
 
 
 
-<title>5. Interaction Effects and Centering</title>
+<title>ch5.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -278,33 +278,42 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Welcome!</a>
-</li>
-<li>
-  <a href="ch1.html">1. Mixed Models – The force awakens</a>
-</li>
-<li>
-  <a href="ch2.html">2. Tidying data</a>
-</li>
-<li>
-  <a href="ch3.html">3. The Basic Two-Level Model</a>
-</li>
-<li>
-  <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
-</li>
-<li>
-  <a href="ch5.html">5. Interaction Effects and Centering</a>
-</li>
-<li>
-  <a href="ch6.html">6. Three Level Models</a>
-</li>
-<li>
-  <a href="ch7.html">7. Longitudinal Data and Repeated Measures</a>
-</li>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="index.html">Welcome</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="ch1.html">1. Mixed Models – why?</a>
+    </li>
+    <li>
+      <a href="ch2.html">2. Tidying data</a>
+    </li>
+    <li>
+      <a href="ch3.html">3. The Basic Two-Level Model</a>
+    </li>
+    <li>
+      <a href="ch4.html">4. The Random Intercept Random Slope Model</a>
+    </li>
+    <li>
+      <a href="ch5.html">5. Interaction Effects and Centering</a>
+    </li>
+    <li>
+      <a href="ch6.html">6. Three Level Models</a>
+    </li>
+    <li>
+      <a href="ch7.html">7. Longitudinal Data / Repeated Measures</a>
+    </li>
+  </ul>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -314,11 +323,12 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">5. Interaction Effects and Centering</h1>
 
 </div>
 
 
+<div id="interaction-effects-and-centering" class="section level1">
+<h1>5. Interaction Effects and Centering</h1>
 <p>Let’s do model 5!</p>
 <p>For this model our predictors will be <em>illiterate</em> (a covariate variable) and <em>old_buildings</em> (a categorical variable/factor indicating whether or not there are a lot of old building in a parish). Here we will ignore the within/between effect difference for <em>illiterate</em> and focus on the overall effect (without disaggregation). As a recap, the <em>illiterate</em> variable refers to level 1 units (sections) and the the <em>old_buildings</em> factor refers to level 2 units (parishes).</p>
 <p>In this model we will add both variables as predictors - one goes to the <strong>Covariate(s) box</strong> in the <strong>Linear Mixed Models dialog box</strong>, the other to the <strong>Factor(s) box</strong>. We will test the main effects of both predictors as well as their interaction to see if <em>illiterate</em> effects vary depending on whether or not there are a lot of old buildings (why not?).</p>
@@ -361,6 +371,7 @@ $(document).ready(function () {
 <p><img src="images/ch5/fig_5_4_m6_pred_f.png" /></p>
 <p><strong>Figure 5.4</strong>. <em>Model 6: predicted empty houses scores (fixed effects only)</em>.<br />
  </p>
+</div>
 </div>
 
 
