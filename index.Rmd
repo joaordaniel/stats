@@ -1,5 +1,5 @@
 Hello and welcome.  
 
-You'll be seeing a lot images and gif files (on and a fast and endless mind-disturbing loop) illustrating how to use IBM SPSS to run mixed models. These images and gifs refer to IBM SPSS version 25. Different SPSS versions may show different dialog boxes. I don’t expect these differences to be very dramatic, but even if they are, with a bit of patience you’ll make SPSS do whatever you want. Remember: computers are stupid machines that just do what you tell them to do!  
+You'll be seeing a lot images and gif files (on and a fast and endless mind-disturbing loop - my bad) illustrating how to use IBM SPSS to run mixed models. These images and gifs refer to IBM SPSS version 25. Different SPSS versions may show different dialog boxes. I don’t expect these differences to be very dramatic, but even if they are, with a bit of patience you’ll make SPSS do whatever you want. Remember: computers are stupid machines that just do what you tell them to do!  
 
 This tutorial is an ongoing project. It will get better with time. Suggestions, comments and corrections are really welcomed. You can email me at joaordaniel at gmail.com, or if you know your way around github do your push and pulls at https://github.com/joaordaniel/stats.  
