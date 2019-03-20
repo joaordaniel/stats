@@ -1,5 +1,5 @@
 name: "Linear Mixed Models"
-
+output_dir: "."
 navbar:
   title: "Linear Mixed Models"
   left:
@@ -19,3 +19,6 @@ navbar:
     href: ch6.html
   - text: "7. Longitudinal Data and Repeated Measures"
     href: ch7.html
+    
+output:
+  html_document:
