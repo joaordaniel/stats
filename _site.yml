@@ -8,7 +8,7 @@ navbar:
     menu:
       - text: "1. Mixed Models – why?"
         href: ch1.html
-      - text: "2. Tidying data"
+      - text: "2. Tidying Data"
         href: ch2.html
       - text: "3. The Basic Two-Level Model"
         href: ch3.html
