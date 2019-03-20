@@ -1,7 +1,6 @@
 name: "Linear Mixed Models"
 output_dir: "."
 navbar:
-  title: "Linear Mixed Models"
   right:
   - text: "Welcome"
     href: index.html
