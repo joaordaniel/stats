@@ -1,5 +1,5 @@
 ---
-title: "Interaction Effects and Centering"
+title: "5. Interaction Effects and Centering"
 ---
 
 
