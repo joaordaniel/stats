@@ -96,6 +96,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -110,7 +113,6 @@ body {
   padding-top: 69px;
   margin-top: -69px;
 }
-
 .section h2 {
   padding-top: 69px;
   margin-top: -69px;
@@ -130,6 +132,43 @@ body {
 .section h6 {
   padding-top: 69px;
   margin-top: -69px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -151,18 +190,77 @@ $(document).ready(function () {
 });
 </script>
 
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -288,9 +386,9 @@ $(document).ready(function () {
 <h3>Intraclass Correlation</h3>
 <p>So what does the partitioning of variance in level 1 (within groups) and level 2 variance (between groups) give you?</p>
 <p>It gives you the famous <strong>Intraclass Correlation</strong> (<strong>ICC</strong> for shorts). ICC is a measure of dependency of two observations within the same grouping unit. In our example here, you can think of it as a measure of how similar <em>empty_house</em> scores are within the same parish.</p>
-<p>You can compute the ICC by dividing level 1 variance (<strong><em>σ</em><sub>within</sub></strong>) by the total variance (<strong><em>σ</em><sub>within</sub></strong> + <strong><em>σ</em><sub>between</sub></strong>). The null model total variance equals 710.70 + 463.60 = 1174.3, and so the ICC equals 710.70 / 1174.3 = <strong>.61</strong>.</p>
+<p>You can compute the ICC by dividing level 2 variance (<strong><em>σ</em><sub>between</sub></strong>) by the total variance (<strong><em>σ</em><sub>within</sub></strong> + <strong><em>σ</em><sub>between</sub></strong>). The null model total variance equals 710.70 + 463.60 = 1174.3, and so the ICC equals 463.60 / 1174.3 = <strong>.39</strong>.</p>
 <p>How high is a high ICC? Well, it… depends. From my experience with school data (students nested in schools kind of data), ICCs close to .20 are high and not that common. In longitudinal data (repeated observations nested within subjects) ICCs can go much higher. Imagine you measure your mood daily. Your mood score for today will be highly relate with tomorrow’s mood score and so on and so forth (high ICC). If your mood scores vary completely at random on a daily basis, then maybe, just maybe, you might need some help – who knows, maybe statistics will be the life-anchor you’ve been searching for.</p>
-<p>Another way to look at the <strong>ICC</strong> is as <strong>measure of unexplained variance at each level</strong>. Here the ICC is .61, so <strong>61% of the unexplained variance is due to within parish differences</strong> and <strong>39% (100% - 61%) is due to between parish differences</strong>. This suggests that differences in empty house scores have more to do with section characteristics than to parish characteristics.</p>
+<p>Another way to look at the <strong>ICC</strong> is as <strong>measure of unexplained variance at each level</strong>. Here the ICC is .39, so <strong>39% of the unexplained variance is due to between parish differences</strong> and <strong>61% (100% - 39%) is due to within parish differences</strong>. This suggests that differences in empty house scores have more to do with section characteristics than to parish characteristics.</p>
 <p>Ok. Let’s make this more interesting and add some predictors to our model.<br />
    </p>
 </div>
@@ -311,8 +409,8 @@ $(document).ready(function () {
 <p><img src="images/ch3/fig_3_2_3_m1_estimates.png" /></p>
 <p><strong>Figure 3.2.3</strong>. <em>Model 1 fixed effects’ estimates</em>.<br />
    </p>
-<div id="how-do-random-intercept-models-look-like" class="section level3">
-<h3>How do random intercept models look like?</h3>
+<div id="what-do-random-intercept-models-look-like" class="section level3">
+<h3>What do random intercept models look like?</h3>
 <p>Take a look at the <strong>figure 3.2.4</strong>. It’s a plot of predicted number of empty houses for 6 parishes. Did you check the <strong>Predicted value – Predicted Values &amp; Residuals checkbox</strong> in the <strong>Linear Mixed Models: Save dialog box</strong>? If you did, there’s a variable in your dataset somewhere, whose name starts with <em>PRED_</em>. What do you see?</p>
 <p><img src="images/ch3/fig_3_2_4_m1_pred_rf.png" /></p>
 <p><strong>Figure 3.2.4</strong>. <em>Model 1: number of empty houses predicted from the number of illiterate residents for 6 parishes starting with letter A</em>.<br />

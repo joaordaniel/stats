@@ -89,11 +89,11 @@ So what does the partitioning of variance in level 1 (within groups) and level 2
 
 It gives you the famous **Intraclass Correlation** (**ICC** for shorts). ICC is a measure of dependency of two observations within the same grouping unit. In our example here, you can think of it as a measure of how similar *empty_house* scores are within the same parish.  
 
-You can compute the ICC by dividing level 1 variance (**_σ_<sub>within</sub>**) by the total variance (**_σ_<sub>within</sub>** + **_σ_<sub>between</sub>**). The null model total variance equals 710.70 + 463.60 = 1174.3, and so the ICC equals 710.70 / 1174.3 = **.61**.  
+You can compute the ICC by dividing level 2 variance (**_σ_<sub>between</sub>**) by the total variance (**_σ_<sub>within</sub>** + **_σ_<sub>between</sub>**). The null model total variance equals 710.70 + 463.60 = 1174.3, and so the ICC equals 463.60 / 1174.3 = **.39**.  
 
 How high is a high ICC? Well, it… depends. From my experience with school data (students nested in schools kind of data), ICCs close to .20 are high and not that common. In longitudinal data (repeated observations nested within subjects) ICCs can go much higher. Imagine you measure your mood daily. Your mood score for today will be highly relate with tomorrow’s mood score and so on and so forth (high ICC). If your mood scores vary completely at random on a daily basis, then maybe, just maybe, you might need some help – who knows, maybe statistics will be the life-anchor you’ve been searching for.  
 
-Another way to look at the **ICC** is as **measure of unexplained variance at each level**. Here the ICC is .61, so **61% of the unexplained variance is due to within parish differences** and **39% (100% - 61%) is due to between parish differences**. This suggests that differences in empty house scores have more to do with section characteristics than to parish characteristics.  
+Another way to look at the **ICC** is as **measure of unexplained variance at each level**. Here the ICC is .39, so **39% of the unexplained variance is due to between parish differences** and **61% (100% - 39%) is due to within parish differences**. This suggests that differences in empty house scores have more to do with section characteristics than to parish characteristics.  
 
 Ok. Let’s make this more interesting and add some predictors to our model.  
 &nbsp;
@@ -129,7 +129,7 @@ The **intercept fixed effect** was estimated as **61.14**. **Intercept** regress
 &nbsp;
 &nbsp;
 
-### How do random intercept models look like?
+### What do random intercept models look like?
 Take a look at the **figure 3.2.4**. It’s a plot of predicted number of empty houses for 6 parishes. Did you check the **Predicted value – Predicted Values & Residuals checkbox** in the **Linear Mixed Models: Save dialog box**? If you did, there’s a variable in your dataset somewhere, whose name starts with *PRED_*. What do you see?  
 
 ![](images/ch3/fig_3_2_4_m1_pred_rf.png)
