@@ -1,11 +1,12 @@
 # 6. Three Level Models      
 You can use mixed models to analyse more complex nested structures. For example, students, within classrooms, within schools, so on and so forth. I’ll just briefly show you how to create a 3 level, random intercept null model and then proceed to highlight a few basic details.   
 
-Let’s continue with Lisbon 2011 census but with a different dataset called **lx_2011_house3.sav**. You can download it [here](data/ch6/lx_2011_house3.sav). This dataset has the number of 1 and 2 story buildings (*small_buildings*), and the number o retired residents in 500 sub-sections, inserted in 379 sections and 52 Lisbon parishes. Follow the instructions of **figure 6.1** if you may to create the null model.
+Let’s continue with Lisbon 2011 census but with a different dataset called **lx_2011_house3.sav**. You can download it [here](data/ch6/lx_2011_house3.sav). This dataset has the number of 1 and 2 story buildings (*small_buildings*), and the number o retired residents (*retired_res*) in 500 sub-sections, inserted in 379 sections and 52 Lisbon parishes. Follow the instructions of **figure 6.1** if you may to create the null model.
 
 ![](images/ch6/fig_6_1_level3.gif)
 
-***Figure 6.1***. Building a 3 level random intercept null model.
+**Figure 6.1**. *Building a 3 level random intercept null model*.   
+(note: when I originally made this gif the dataset didn't include the *retired_res* column)
 &nbsp;  
 
 
