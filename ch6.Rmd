@@ -1,7 +1,7 @@
 # 6. Three Level Models      
 You can use mixed models to analyse more complex nested structures. For example, students, within classrooms, within schools, so on and so forth. I’ll just briefly show you how to create a 3 level, random intercept null model and then proceed to highlight a few basic details.   
 
-Let’s have a completely new and different dataset called **lx_2011_house3.sav**. You can download it [here](data/ch6/lx_2011_house3.sav). This dataset has the number of 1 and 2 story buildings in 500 sub-sections, inserted in 379 sections and 52 Lisbon parishes (this is a selection of 2011 Lisbon census data). Follow the instructions of **figure 6.1** if you may.
+Let’s continue with Lisbon 2011 census but with a different dataset called **lx_2011_house3.sav**. You can download it [here](data/ch6/lx_2011_house3.sav). This dataset has the number of 1 and 2 story buildings (*small_buildings*), and the number o retired residents in 500 sub-sections, inserted in 379 sections and 52 Lisbon parishes. Follow the instructions of **figure 6.1** if you may to create the null model.
 
 ![](images/ch6/fig_6_1_level3.gif)
 
@@ -9,8 +9,43 @@ Let’s have a completely new and different dataset called **lx_2011_house3.sav*
 &nbsp;  
 
 
-The first thing you’ll see in the output is the number of parameters. We have the fixed intercept effect, random intercept variances for level 2 and level 3, and the residual variance (4 parameters total). So now we have, a level 1 variance (**_σ_<sub>residual</sub>**), a level 2 variance (**_σ_<sub>between_section</sub>**), and a level 3 variance (**_σ_<sub>between_parish</sub>**). That is, we have unexplained variance (in the number of 1 and 2 story building) at three different levels. This means we can compute 3 different ICCs.   
+The first thing you’ll see in the output is the number of parameters. We have the fixed intercept effect, random intercept variances for level 2 and level 3, and the residual variance (level 1 variance): (4 parameters total). So now we have, a level 1 variance (**_σ_<sub>residual</sub>**), a level 2 variance (**_σ_<sub>between_section</sub>**), and a level 3 variance (**_σ_<sub>between_parish</sub>**). That is, we have unexplained variance (in the number of 1 and 2 story building) at three different levels. This means we can compute more than one ICC.   
 
-From the variance estimates provided in the last table: **_σ_<sub>residual</sub>** = **56.41**, **_σ_<sub>between_section</sub>** = **90.87** (level 2), and **_σ_<sub>between_parish</sub>** = **19.04** (level 3). This makes the total variance = **166.32**. As such, **33.9%** (56.41 / 166.32) is level 1 variance, **54.6%** (90.87 / 166.32) is level 2 variance, and **11.4%** is level 3 variance.   
+From the variance estimates provided in the last table: **_σ_<sub>residual</sub>** = **56.41** (level 1), **_σ_<sub>between_section</sub>** = **90.87** (level 2), and **_σ_<sub>between_parish</sub>** = **19.04** (level 3). This makes the total variance = **166.32**. As such, **33.9%** (56.41 / 166.32) is level 1 variance, **54.6%** (90.87 / 166.32) is level 2 variance, and **11.4%** (19.04 / 166.32) is level 3 variance. 
 
-Now if we had predictors, we could add them and look at effects’ estimates and deviance statistics of the different models as we did for 2 level models. But just a quick note related to the ecological fallacy stuff. If you have a 3 level model like this (subsection, section, parish), you can disaggregate a predictor effect in a (a) within section effect, (b) between section – within parish effect, and (c) a between parish effect (neat!). Then you can have varying slopes, interactions between variables measured at different levels, and whatelse... It can get really messy. I have very little experience with 3 level models so I won’t go further than this.
+There’s another way to look at this:   
+.114 (% of level 3 variance, 19.04 / 166.32) expresses the correlation between the number of small buildings in **two sub-sections, from _different sections_, from the same parish**;    
+.661 (% of level 2 and level 3 variance, (19.04 + 90.87) / 166.32) expresses the correlation between **two sub-sections, from the _same section_ and (consequently from) the same parish**   
+
+
+## 6.1 Disaggregating within, within/between and between effects
+Remember section 3.3 about disaggregating within and between group effects? Now, if we have 3 level models, the same predictor can have different effects at the 3 levels.   
+This dataset as one predictor (*retired_res*) that we will test whether it relates with the number of 1 and 2 story houses. *retired_res* effect within sub-section, can differ from the within section (between section) effect, and from the between parish effect. Imagine if we had 4 levels: withins betweens, betweens withins, withins withins, and whatnot.   
+
+The way we tackle this is the same has we did for the 2 level model, but we step up a notch. So we first need to compute a mean score for every parish (to get the level 3 effect), and a mean score for every section (to get the level 2 effect). As usual we will use the **Data > Aggregate command**. I’ve used *retired_res_fm* to name the level 3 variable and *retired_res_sm* for the level 2 variable. Don’t forget to use both *section_id* and *freg_id* as break variables in the **Aggreggate Data: Dialog box**. 
+
+These variables allow us to estimate a model similar to the first model presented in **section 3.3** (**figure 3.3.1**). As such, *retired_res_sm* regression estimate will tell us how much the level 2 effect differs from the level 1 effect (*retired_res* effect), and *retired_res_fm* regression estimate will tell us how much the level 3 effect differs from the level 2 effect.   
+
+To get the precise estimates of the regression slope at each level, as shown in **figure 3.3.5**, we have to center *retired_res* and *retired_res_sm* (use **Transform > Compute**). We have to center *retired_res* on *retired_res_sm* (retired_res – retired_res_sm) and *retired_res_sm* on *retired_res_fm* (retired_res_sm – retired_res_fm). Let’s name the first centered score as *retired_res_within* and the second as *retired_res_sm_within*. A lot of similar names I know… In the end you should get something like this [dataset](data/ch6/lx_2011_house3.sav).   
+
+The idea here is that you estimate two different random intercept 3-level models:   
+1. one with *retired_res*, *retired_res_sm* and *retired_res_fm* main effects;   
+2. the other with *retired_res_within*, *retired_sm_within* and *retired_res_fm* main effects.   
+The models will take a while to run, so if nothing happens for a while don't be scared. 
+
+After you estimate both models take a look at the regression estimates of the fixed effects (Don't forget the **Parameter Estimates** checkbox in the **Linear Mixed Models: Dialog box**). For the first model the estimates should be:   
+*retired_res* = **.040**   
+*retired_res_sm* = **-.022**   
+*retired_res_fm* = **.004**   
+
+and for the second:
+*retired_res_within* = **.040**   
+*retired_sm_within* = **.019**   
+*retired_res_fm* = **0.023**   
+
+Can you do same that we did in **section 3.3**? Re-read the second paragraph of this section to get what I'm aiming at. Try to figure out how these estimates are related before moving on.    
+
+The first estimate in both models refers to the within section effects - level 1. They are the same. The *retired_sm_within* is the level 2 effect and equals *retired_res* + *retired_res_sm*. The *retired_res_fm* is the level 3 effect and equals *retired_res_within* + *retired_res_fm* (don't eliminate the minus sign of the *retired_res_sm* when you do the sum).   
+
+
+Then you can have varying slopes, interactions between variables measured at different levels, and whatelse... It can get really messy. I have very little experience with 3 level models so I won’t go further than this. For the time being this will have to do.
