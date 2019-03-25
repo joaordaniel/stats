@@ -27,7 +27,7 @@ For example, imagine that you have a data file with 200 rows, each row containin
 If you have large datasets, merging can save you a lot a time. Also, you might need to present higher level descriptive statistics and a dataset with just one row for each higher level group might come in handy.  
 
 
-For the above mentioned datasets (**lx_2011_edu.sav** and **lx_2011_housing.sav**) the key variable is *freg_id*. What we want is to add parish housing data (higher level data) to section’s education data. Just imagine you had to type parish names for every one of the 1044 rows in **lx_2011_edu.sav** dataset (exciting!). Like this you just have to type 53 different names.  
+For the above mentioned datasets (**lx_2011_edu.sav** and **lx_2011_housing.sav**) the key variable is *freg_id*. What we want is to add parish housing data (higher level data) to section’s education data. Just imagine you had to type parish names for every one of the 1044 rows in **lx_2011_edu.sav** dataset (exciting!). This way you just have to type 53 different names.  
 
 Check **figure 2.1.1** to see the necessary steps. In the end you should get something similar to **figure 2.1.2**. You’ll need to have the **lx_2011_edu.sav** file opened (in front of you) because you will need to execute your commands from here (in SPSS language, **lx_2011_edu.sav** should be the active dataset). The instructions in **figure 2.1.1** assume that the **lx_2011_housing.sav** dataset is opened as well (this is not mandatory as you’ll see from the options in the dialog box).
 
@@ -49,7 +49,7 @@ Just a note, in some SPSS versions you will need to sort the key variable in bot
 ## 2.2. Data > Aggregate
 To jump right into it, if you’re going to mix model a lot, you’ll have to do a lot of mean centering (i.e., subtracting mean values). What this implies, is that you’ll (a) have to compute means across groups first (i.e., aggregate data) and then (b) subtract this value from a lower level score.  
 
-Imagine for example, that you for some mysterious (but nevertheless valid) reason want to center your height on the mean height of your lab colleagues. For me, a 183cm human being, this would put my centered height at 183 – 170 = 13 (no I didn’t measure anyone in my lab, but 170cm seemed a really nice non-offensive mean height). Mean centered scores just tell you how many units a specific scores is above, or below some mean (usually a group mean or the mean of the entire sample). Maybe not the brightest example, but for now just retain that mean centering it’s a thing, and it’s a good thing. We’ll get back to this later.  
+Imagine for example, that you for some mysterious (but nevertheless valid) reason want to center your height on the mean height of your lab colleagues. For me, a 183cm human being, this would put my centered height at 183 – 170 = 13 (no I didn’t measure anyone in my lab, but 170cm seemed a really nice non-offensive mean height). Mean centered scores just tell you how many units a specific score is above, or below some mean (usually a group mean or the mean of the entire sample). This may not be the brightest example, but for now just retain that mean centering it’s a thing, and it’s a good thing. We’ll get back to this later.  
 
 We will use the dataset from the previous example and add two new variables: *no_education_fm* (fm for freguesia mean) and sup_education_fm. These variables represent mean parish scores. The following instructions show you how to do this (**figure 2.2.1**), and you should get something like **figure 2.2.2**.
 

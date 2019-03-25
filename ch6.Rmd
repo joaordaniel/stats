@@ -1,7 +1,7 @@
 # 6. Three Level Models      
 You can use mixed models to analyse more complex nested structures. For example, students, within classrooms, within schools, so on and so forth. I’ll just briefly show you how to create a 3 level, random intercept null model and then proceed to highlight a few basic details.   
 
-Let’s continue with Lisbon 2011 census but with a different dataset called **lx_2011_house3.sav**. You can download it [here](data/ch6/lx_2011_house3.sav). This dataset has the number of 1 and 2 story buildings (*small_buildings*), and the number o retired residents (*retired_res*) in 500 sub-sections, inserted in 379 sections and 52 Lisbon parishes. Follow the instructions of **figure 6.1** if you may to create the null model.
+Let’s continue with Lisbon 2011 census but with a different dataset called **lx_2011_house3.sav**. You can download it [here](data/ch6/lx_2011_house3.sav). This dataset has the number of 1 and 2 story buildings (*small_buildings*), and the number of retired residents (*retired_res*) in 500 sub-sections, inserted in 379 sections and 52 Lisbon parishes. Follow the instructions of **figure 6.1** if you may to create the null model.
 
 ![](images/ch6/fig_6_1_level3.gif)
 
@@ -21,9 +21,9 @@ There’s another way to look at this:
 
 ## 6.1 Disaggregating within, within/between and between effects
 Remember section 3.3 about disaggregating within and between group effects? Now, if we have 3 level models, the same predictor can have different effects at the 3 levels.   
-This dataset as one predictor (*retired_res*) that we will test whether it relates with the number of 1 and 2 story houses. *retired_res* effect within sub-section, can differ from the within section (between section) effect, and from the between parish effect. Imagine if we had 4 levels: withins betweens, betweens withins, withins withins, and whatnot.   
+This dataset has one predictor (*retired_res*) that we will test whether it relates with the number of 1 and 2 story houses. *retired_res* effect within sub-section, can differ from the within section (between section) effect, and from the between parish effect. Imagine if we had 4 levels: withins betweens, betweens withins, withins withins, and whatnot.   
 
-The way we tackle this is the same has we did for the 2 level model, but we step up a notch. So we first need to compute a mean score for every parish (to get the level 3 effect), and a mean score for every section (to get the level 2 effect). As usual we will use the **Data > Aggregate command**. I’ve used *retired_res_fm* to name the level 3 variable and *retired_res_sm* for the level 2 variable. Don’t forget to use both *section_id* and *freg_id* as break variables in the **Aggreggate Data: Dialog box**. 
+The way we tackle this is the same as we did for the 2 level model, but we step up a notch. So we first need to compute a mean score for every parish (to get the level 3 effect), and a mean score for every section (to get the level 2 effect). As usual we will use the **Data > Aggregate command**. I’ve used *retired_res_fm* to name the level 3 variable and *retired_res_sm* for the level 2 variable. Don’t forget to use both *section_id* and *freg_id* as break variables in the **Aggreggate Data: Dialog box**. 
 
 These variables allow us to estimate a model similar to the first model presented in **section 3.3** (**figure 3.3.1**). As such, *retired_res_sm* regression estimate will tell us how much the level 2 effect differs from the level 1 effect (*retired_res* effect), and *retired_res_fm* regression estimate will tell us how much the level 3 effect differs from the level 2 effect.   
 
@@ -44,7 +44,7 @@ and for the second:
 *retired_sm_within* = **.019**   
 *retired_res_fm* = **0.023**   
 
-Can you do same that we did in **section 3.3**? Re-read the second paragraph of this section to get what I'm aiming at. Try to figure out how these estimates are related before moving on.    
+Can you do the same that we did in **section 3.3**? Re-read the second paragraph of this section to get what I'm aiming at. Try to figure out how these estimates are related before moving on.    
 
 The first estimate in both models refers to the within section effects - level 1. They are the same. The *retired_sm_within* is the level 2 effect and equals *retired_res* + *retired_res_sm*. The *retired_res_fm* is the level 3 effect and equals *retired_res_within* + *retired_res_fm* (don't eliminate the minus sign of the *retired_res_sm* when you do the sum).   
 
