@@ -96,9 +96,6 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
-summary {
-  display: list-item;
-}
 </style>
 
 
@@ -113,6 +110,7 @@ body {
   padding-top: 69px;
   margin-top: -69px;
 }
+
 .section h2 {
   padding-top: 69px;
   margin-top: -69px;
@@ -132,43 +130,6 @@ body {
 .section h6 {
   padding-top: 69px;
   margin-top: -69px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -190,77 +151,18 @@ $(document).ready(function () {
 });
 </script>
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
 </script>
 
 <!-- code folding -->
+
 
 
 
@@ -341,6 +243,7 @@ $(document).ready(function () {
 <p>If they are, then data points (within the same higher level unit) are not independent from each other. That is, they are correlated to some extent (intra class correlation will tell you how much – more on this later). This violates one important assumption of linear regression. The consequence of this non-independence, is that the standard error of your estimates (say, the standard error of the mean test score difference between boys and girls) are more or less biased. This typically means that those precious statistically significant effects, might not be so significant after all (inflation of type I error rate).<br />
 Check these references if this explanation doesn’t satisfy you: <a href="https://www.tandfonline.com/doi/abs/10.1080/01443410801954201">Dorman (2018)</a> and <a href="https://journals.sagepub.com/doi/10.3102/00028312019001005">Hopkins (1982)</a>.</p>
 <p><strong>Second</strong>: you have to be careful with ecological fallacies. To avoid them you need to distinguish within-group (level 1) from between-group (level 2) effects, and multilevel models are a great way to do this. Including just one of these effects would only give you part of the story. Take a look at the two images in <a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson’s paradox Wikipedia page</a> to see what I mean. Both images on the right show a negative between-group effect (mean y group scores decrease as x increases) and a positive within-group group effect (within each group, y scores increase as x increases). <a href="https://www.jstor.org/stable/2087176?seq=1#page_scan_tab_contents">Robinson’s (1950)</a> study on literacy is usually referred as a classic illustration of this fallacy.</p>
+<p>[<em>Note to future self: write something about contextual effects</em>]</p>
 <p><strong>Third</strong>: if the reviewer, supervisor, senior colleague asks/demands, you obey. So let’s do this. Mixed models are hype, and someday you will have someone asking you to reanalyse ALL your data with a mixed model. Sometimes the call will be warranted, other times not so much. Either way you will have to know what this is all about. If you do, you will be able to analyse everything all over again (priceless!!!), or you’ll be able to talk your way out of it (the more jargon you use the more successfully you’ll scare those wannabe reviewers, but be careful, too much bullshit and it starts to stink). So let’s get our hands dirty!</p>
 </div>
 </div>

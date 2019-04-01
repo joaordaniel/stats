@@ -96,9 +96,6 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
-summary {
-  display: list-item;
-}
 </style>
 
 
@@ -113,6 +110,7 @@ body {
   padding-top: 69px;
   margin-top: -69px;
 }
+
 .section h2 {
   padding-top: 69px;
   margin-top: -69px;
@@ -132,43 +130,6 @@ body {
 .section h6 {
   padding-top: 69px;
   margin-top: -69px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -190,77 +151,18 @@ $(document).ready(function () {
 });
 </script>
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
 </script>
 
 <!-- code folding -->
+
 
 
 
@@ -350,19 +252,20 @@ $(document).ready(function () {
 <p>So, we started with model 3 and then added a random slope to our model (model 4). We have the same fixed predictors in both models (<em>illiterate_between</em> and <em>illiterate_within</em>), but one more random effect in model 4. Can we test whether model 4 is “better” than model 3. YES WE CAN!</p>
 <p>Go back to the output of model 3 (where’s that? Nevermind…). The different indices in one <strong>Information Criteria</strong> tables are all similar to one another. These raw values by themselves don’t tell us much, but we can compare Information Criteria values from different models to see if adding/removing fixed and random effects improves model fit. The lower these indices are, the better. That is, a model with lower indices is a better fit to your data than a model with higher indices (better fit equals to explaining better why the dependent variable scores vary from case to case).</p>
 <p>Getting back to our models 3 and 4. Let’s look at the first value of Information Criteria tables: <strong>-2 Restricted Log Likelihood</strong> values, aka -2LL, aka <strong>Deviance</strong>. Because models 3 and 4 have the same fixed effects (intercept, <em>illiterate_within</em>, <em>illiterate_between</em>) and differ only on the random part (model 4 has 1 random slope that is absent in model 3) we can use the difference of deviance values to test whether one model fits better than the other.</p>
-<p>For model 3, <strong>deviance = 10024.563</strong>; for model 4, <strong>deviance = 10024.482</strong>. If you subtract model 3 deviance from model 4 deviance you get <em>.081</em> (adding parameters is supposed to lower information criteria). This difference has a chi-square distribution. The degrees of freedom of this distribution equal the difference in the number of parameters (1 in this case – the random slope). What this means is that you can use a chi-square test to test whether the goodness of fit of 2 models differ. Repeat after me:<br />
+<p>For model 3, <strong>deviance = 10024.563</strong>; for model 4, <strong>deviance = 10024.482</strong>. If you subtract model 3 deviance from model 4 deviance you get <em>.081</em> (adding parameters is supposed to lower information criteria). This difference has a chi-square distribution. The degrees of freedom (df) of this distribution equal the difference in the number of parameters (1 in this case – the random slope). What this means is that you can use a chi-square test to test whether the goodness of fit of 2 models differ. Repeat after me:<br />
 1. compute the deviance difference<br />
-2. subtract the number of parameters<br />
-3. open an excel file and type this formula in a cell: <strong>=INV.CHIQ(<em>df</em>;.95)</strong>; there’s probably a way to do this using a SPSS syntax file but so far I’m stuck with excel<br />
-4. where df should be replaced with the difference in the number of parameters- 1 in this example; if the formula throws an error try swapping .95 with ,95.</p>
-<p>For a chi-square distribution with df = 1, this value is <strong>3.84</strong>. If the deviance difference we found (<strong>.081</strong>) was higher than this, then the 2 models would differ in their fit to the data. It is not, so adding the random slope to model 4 adds pretty much to… nothing! You might have expected this, when we saw that the <strong><em>σ</em><sub>slope</sub> = .0035</strong> (~0) and the lines in the figure were almost parallel.<br />
+2. subtract the number of parameters (to get the df of the chi-square distribution)<br />
+3. check a chi-square distribution table, or use this site <a href="https://www.rsquaredcomputing.com/shiny/vistributions/">here</a> (click the chi-square distribution button, click the <em>Find Percentile</em> option, set <em>probability</em> at 0.95 and set degrees of freedom to equal the difference in the number of parameters).</p>
+<p>For a chi-square distribution with df = 1, this value is <strong>3.84</strong>. If the deviance difference we found (<strong>.081</strong>) was higher than this, then the 2 models would differ in their fit to the data. It is not, so adding the random slope to model 4 adds pretty much to… nothing! You might have expected this, when we saw that the <strong><em>σ</em><sub>slope</sub> = .0035</strong> (~0) and the lines in the figure were almost parallel.</p>
+<p>[<em>Note to future self: write something about comparisons of non-nested models</em>]<br />
  </p>
 <div id="reml-and-ml" class="section level3">
 <h3>REML and ML</h3>
 <p>In the <strong>Linear Mixed Models dialog box</strong> where we specify our models, there’s a button there (<strong>Estimation</strong>) that gives you access to the <strong>Linear Mixed Models: Estimation dialog box</strong>. Using an auto-mechanics analogy, this is what is under the hood. You can choose two estimation options in the <strong>Method section</strong>: REML or ML. REML is the default. I can’t explain how they differ (yet!). The explanation gets a bit technical and I don’t understand it well enough to try and explain it to you in friendly terms.</p>
 <p>As far as I have been “told”, REML is better when sample sizes are small (how small is small… well… <em>“Have you noticed how good the weather has been lately?”</em>). ML is better when … (<em>“It feels almost like summer don’t you think?”</em>). When the sample sizes are big, REML and ML are expected to give very similar results. That’s another advantage of BIG data samples – you can pretty much hit buttons at random that results will always look nice.</p>
-<p>On a more serious note. The take home message is: 1. If you want to <strong>compare</strong> the fit (compare deviances) of models (from the same data!) with the <strong>same fixed effects but with different numbers of random effects</strong>, you should <strong>use REML</strong> to estimate both models; 2. if you want to <strong>compare</strong> the fit of models (from the same dataset!) with the <strong>same random effects but with different fixed effects</strong>, you should use ML instead. The reason for this is that… (<em>“Do you think it will rain next week?”</em> … got you!).</p>
-<p>Snijders &amp; Bosker (2012) provide a set of guiding rules on how to use deviance tests to build your models and decide which variables to keep/drop. The list is long and I’ll eventually summarize it here, but for now I’ll just point the way. Start with fixed effects and interactions that are theoretically meaningful and then add/test one random slope at a time. Don’t go adding a lot of random effects to your models at once (this is one I memorized), it will likely cause SPSS to start throwing errors and warnings at you. There’s a limit to how many random effects you can have- there’s a formula for that somewhere in Snijders &amp; Bosker (2012) (as you probably noticed, everything I don’t know and/or can’t explain – Snijders &amp; Bosker do and can).</p>
+<p>On a more serious note. The take home message is: 1. If you want to <strong>compare</strong> the fit (compare deviances) of nested models with the <strong>same fixed effects but with different numbers of random effects</strong>, you should <strong>use REML</strong> to estimate both models; 2. if you want to <strong>compare</strong> the fit of nested models with the <strong>same random effects but with different fixed effects</strong>, you should use ML instead. The reason for this is that… (<em>“Do you think it will rain next week?”</em> … got you!).</p>
+<p>By the way, <em>nested</em> means that one model is a subset of another. For example, model 1 is nested in model 2 if the parameters in model 1 are a subset of the parameters in model 2. Or in other words, one model is nested in another if you can obtain the first model by constraining some of the parameters of the second model.</p>
+<p><a href="https://www.stats.ox.ac.uk/~snijders/mlbook.htm">Snijders &amp; Bosker (2012)</a> provide a set of guiding rules on how to use deviance tests to build your models and decide which variables to keep/drop. The list is long and I’ll eventually summarize it here, but for now I’ll just point the way. Start with fixed effects and interactions that are theoretically meaningful and then add/test one random slope at a time. Don’t go adding a lot of random effects to your models at once (this is one I memorized), it will likely cause SPSS to start throwing errors and warnings at you. There’s a limit to how many random effects you can have- there’s a formula for that somewhere in Snijders &amp; Bosker (2012) (as you probably noticed, everything I don’t know and/or can’t explain – Snijders &amp; Bosker do and can).</p>
 </div>
 </div>
 </div>

@@ -36,13 +36,14 @@ Go back to the output of model 3 (where’s that? Nevermind…). The different i
 
 Getting back to our models 3 and 4. Let’s look at the first value of Information Criteria tables: **-2 Restricted Log Likelihood** values, aka -2LL, aka **Deviance**. Because models 3 and 4 have the same fixed effects (intercept, *illiterate_within*, *illiterate_between*) and differ only on the random part (model 4 has 1 random slope that is absent in model 3) we can use the difference of deviance values to test whether one model fits better than the other.  
 
-For model 3, **deviance = 10024.563**; for model 4, **deviance = 10024.482**. If you subtract model 3 deviance from model 4 deviance you get *.081* (adding parameters is supposed to lower information criteria). This difference has a chi-square distribution. The degrees of freedom of this distribution equal the difference in the number of parameters (1 in this case – the random slope). What this means is that you can use a chi-square test to test whether the goodness of fit of 2 models differ. Repeat after me:  
+For model 3, **deviance = 10024.563**; for model 4, **deviance = 10024.482**. If you subtract model 3 deviance from model 4 deviance you get *.081* (adding parameters is supposed to lower information criteria). This difference has a chi-square distribution. The degrees of freedom (df) of this distribution equal the difference in the number of parameters (1 in this case – the random slope). What this means is that you can use a chi-square test to test whether the goodness of fit of 2 models differ. Repeat after me:  
 1. compute the deviance difference  
-2. subtract the number of parameters  
-3. open an excel file and type this formula in a cell: **=INV.CHIQ(_df_;.95)**; there’s probably a way to do this using a SPSS syntax file but so far I’m stuck with excel   
-4. where df should be replaced with the difference in the number of parameters- 1 in this example; if the formula throws an error try swapping .95 with ,95.  
+2. subtract the number of parameters (to get the df of the chi-square distribution)  
+3. check a chi-square distribution table, or use this site [here](https://www.rsquaredcomputing.com/shiny/vistributions/) (click the chi-square distribution button, click the _Find Percentile_ option, set _probability_ at 0.95 and set degrees of freedom to equal the difference in the number of parameters).   
 
 For a chi-square distribution with df = 1, this value is **3.84**. If the deviance difference we found (**.081**) was higher than this, then the 2 models would differ in their fit to the data. It is not, so adding the random slope to model 4 adds pretty much to… nothing! You might have expected this, when we saw that the **_σ_<sub>slope</sub> = .0035** (~0) and the lines in the figure were almost parallel.  
+
+[*Note to future self: write something about comparisons of non-nested models*]   
 &nbsp;  
 
 ### REML and ML
@@ -51,7 +52,9 @@ In the **Linear Mixed Models dialog box** where we specify our models, there’s
 As far as I have been "told", REML is better when sample sizes are small (how small is small… well… *“Have you noticed how good the weather has been lately?”*). ML is better when … (*“It feels almost like summer don’t you think?”*). When the sample sizes are big, REML and ML are expected to give very similar results. That’s another advantage of BIG data samples – you can pretty much hit buttons at random that results will always look nice.  
 
 On a more serious note. The take home message is:
-1.	If you want to **compare** the fit (compare deviances) of models (from the same data!) with the **same fixed effects but with different numbers of random effects**, you should **use REML** to estimate both models;
-2.	if you want to **compare** the fit of models (from the same dataset!) with the **same random effects but with different fixed effects**, you should use ML instead. The reason for this is that… (*“Do you think it will rain next week?”* … got you!).  
+1.	If you want to **compare** the fit (compare deviances) of nested models with the **same fixed effects but with different numbers of random effects**, you should **use REML** to estimate both models;
+2.	if you want to **compare** the fit of nested models with the **same random effects but with different fixed effects**, you should use ML instead. The reason for this is that… (*“Do you think it will rain next week?”* … got you!).  
 
-Snijders & Bosker (2012) provide a set of guiding rules on how to use deviance tests to build your models and decide which variables to keep/drop. The list is long and I’ll eventually summarize it here, but for now I’ll just point the way. Start with fixed effects and interactions that are theoretically meaningful and then add/test one random slope at a time. Don’t go adding a lot of random effects to your models at once (this is one I memorized), it will likely cause SPSS to start throwing errors and warnings at you. There’s a limit to how many random effects you can have- there’s a formula for that somewhere in Snijders & Bosker (2012) (as you probably noticed, everything I don’t know and/or can’t explain – Snijders & Bosker do and can).
+By the way, _nested_ means that one model is a subset of another. For example, model 1 is nested in model 2 if the parameters in model 1 are a subset of the parameters in model 2. Or in other words, one model is nested in another if you can obtain the first model by constraining some of the parameters of the second model.   
+
+[Snijders & Bosker (2012)](https://www.stats.ox.ac.uk/~snijders/mlbook.htm) provide a set of guiding rules on how to use deviance tests to build your models and decide which variables to keep/drop. The list is long and I’ll eventually summarize it here, but for now I’ll just point the way. Start with fixed effects and interactions that are theoretically meaningful and then add/test one random slope at a time. Don’t go adding a lot of random effects to your models at once (this is one I memorized), it will likely cause SPSS to start throwing errors and warnings at you. There’s a limit to how many random effects you can have- there’s a formula for that somewhere in Snijders & Bosker (2012) (as you probably noticed, everything I don’t know and/or can’t explain – Snijders & Bosker do and can).

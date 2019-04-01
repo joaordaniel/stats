@@ -12,11 +12,13 @@ Use the Topics menu on the right to navigate to the different pages of the site.
 
 
 **Hall of Fame**   
-Thanks to: Joana Pipa, Leonor Lavradio, and Matilde Barata for helping review the contents of this tutorial. All errors, omissions, and bad jokes are on me.   
+Thanks to Joana Pipa, Leonor Lavradio, and Matilde Barata for helping review the contents of the first version of this tutorial. All errors, omissions, and bad jokes are on me.   
 
-**Major updates**   
-*2019.03.21   
+**Updates**   
+2019.04.01   
+added a link in section 4.1 to a really nice website from where you can get chi-square values for the deviance test   
+2019.03.21   
 new material in the Three Level Models' section;   
 added a predictor variable to the planes dataset in Longitudinal Data / Repeated Measures' section.   
-*2019.03.19   
+2019.03.19   
 site launch.   

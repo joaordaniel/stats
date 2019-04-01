@@ -87,7 +87,7 @@ By the way, you can actually use the **Linear Mixed Models dialog boxes** to do 
 ### Intraclass Correlation
 So what does the partitioning of variance in level 1 (within groups) and level 2 variance (between groups) give you?  
 
-It gives you the famous **Intraclass Correlation** (**ICC** for shorts). ICC is a measure of dependency of two observations within the same grouping unit. In our example here, you can think of it as a measure of how similar *empty_house* scores are within the same parish.  
+It gives you the famous **Intraclass Correlation** (**ICC** for shorts, aka variance partition coefficient - VPC, aka intra-unit correlation). ICC is a measure of dependency of two observations within the same grouping unit. In our example here, you can think of it as a measure of how similar *empty_house* scores are within the same parish.  
 
 You can compute the ICC by dividing level 2 variance (**_σ_<sub>between</sub>**) by the total variance (**_σ_<sub>within</sub>** + **_σ_<sub>between</sub>**). The null model total variance equals 710.70 + 463.60 = 1174.3, and so the ICC equals 463.60 / 1174.3 = **.39**.  
 
