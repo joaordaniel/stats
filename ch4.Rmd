@@ -43,7 +43,7 @@ For model 3, **deviance = 10024.563**; for model 4, **deviance = 10024.482**. If
 
 For a chi-square distribution with df = 1, this value is **3.84**. If the deviance difference we found (**.081**) was higher than this, then the 2 models would differ in their fit to the data. It is not, so adding the random slope to model 4 adds pretty much to… nothing! You might have expected this, when we saw that the **_σ_<sub>slope</sub> = .0035** (~0) and the lines in the figure were almost parallel.  
 
-[*Note to future self: write something about comparisons of non-nested models*]   
+[*Note to future self: write something about the use of AIC to compare non-nested models*]   
 &nbsp;  
 
 ### REML and ML
